@@ -1,0 +1,38 @@
+main {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.board-list {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.3em;
+  border: 1px solid black;
+  border-radius: 10px;
+
+  .board-image {
+    width: fill;
+    aspect-ratio: 1 / 1.5;
+  }
+
+  .edit-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+    justify-content: space-evenly;
+  }
+}

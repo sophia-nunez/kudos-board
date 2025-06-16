@@ -1,0 +1,9 @@
+header {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  text-align: center;
+  position: sticky;
+  top: 0;
+  padding: 20px;
+  margin-bottom: 20px;
+}
