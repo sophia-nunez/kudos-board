@@ -1,5 +1,6 @@
 import Board from "./Board";
 import "../styles/main.css";
+import "../styles/HomePage.css";
 
 const HomePage = () => {
   return (
