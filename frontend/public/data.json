@@ -1,0 +1,150 @@
+{
+  "kudosBoards": [
+    {
+      "id": 0,
+      "title": "Team Excellence",
+      "description": "Celebrating the amazing teamwork and dedication shown this quarter.",
+      "image": "../assets/images/placeholder.png",
+      "cards": [
+        {
+          "id": 0,
+          "title": "Great Collaboration",
+          "description": "The dev and design teams worked seamlessly to ship the new feature.",
+          "image": "../assets/images/placeholder.png",
+          "upvotes": 2
+        },
+        {
+          "id": 1,
+          "title": "Outstanding Support",
+          "description": "Customer service resolved 99% of tickets within 24 hours.",
+          "image": "../assets/images/placeholder.png",
+          "upvotes": 1
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Innovation Wins",
+      "description": "Spotlighting groundbreaking ideas that made an impact.",
+      "image": "../assets/images/placeholder.png",
+      "cards": [
+        {
+          "id": 0,
+          "title": "New Feature Launch",
+          "description": "Launched the AI-powered dashboard ahead of schedule.",
+          "image": "../assets/images/placeholder.png",
+          "upvotes": 7
+        },
+        {
+          "id": 1,
+          "title": "Process Improvement",
+          "description": "Streamlined the QA process, cutting test time by 30%.",
+          "image": "../assets/images/placeholder.png",
+          "upvotes": 2
+        },
+        {
+          "id": 2,
+          "title": "Creative Hackathon",
+          "description": "Winning project from our internal hackathon is going to market!",
+          "image": "../assets/images/placeholder.png",
+          "upvotes": 8
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Client Appreciation",
+      "description": "Recognizing stellar client interactions and outcomes.",
+      "image": "../assets/images/placeholder.png",
+      "cards": [
+        {
+          "id": 0,
+          "title": "Top Feedback",
+          "description": "Received glowing reviews from our top-tier client.",
+          "image": "../assets/images/placeholder.png",
+          "upvotes": 4
+        },
+        {
+          "id": 1,
+          "title": "Relationship Building",
+          "description": "Sales team nurtured a new account into a long-term partnership.",
+          "image": "../assets/images/placeholder.png",
+          "upvotes": 2
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Leadership Shoutouts",
+      "description": "Highlighting leaders who empower and inspire.",
+      "image": "../assets/images/placeholder.png",
+      "cards": [
+        {
+          "id": 0,
+          "title": "Mentor of the Month",
+          "description": "Guided three junior team members through successful project launches.",
+          "image": "../assets/images/placeholder.png",
+          "upvotes": 18
+        },
+        {
+          "id": 1,
+          "title": "Visionary Thinking",
+          "description": "Introduced a strategic plan that aligns teams across the company.",
+          "image": "../assets/images/placeholder.png",
+          "upvotes": 23
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Above and Beyond",
+      "description": "Applauding those who went the extra mile.",
+      "image": "../assets/images/placeholder.png",
+      "cards": [
+        {
+          "id": 0,
+          "title": "Weekend Warrior",
+          "description": "Volunteered extra hours to ensure the product demo ran smoothly.",
+          "image": "../assets/images/placeholder.png",
+          "upvotes": 12
+        },
+        {
+          "id": 1,
+          "title": "Emergency Fix Hero",
+          "description": "Jumped in during a crisis and resolved a production bug within hours.",
+          "image": "../assets/images/placeholder.png",
+          "upvotes": 5
+        },
+        {
+          "id": 2,
+          "title": "Documentation Star",
+          "description": "Revamped our internal wiki for easier onboarding.",
+          "image": "../assets/images/placeholder.png",
+          "upvotes": 2
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Wellness & Culture",
+      "description": "Acknowledging efforts that enhance team well-being and culture.",
+      "image": "../assets/images/placeholder.png",
+      "cards": [
+        {
+          "id": 0,
+          "title": "Yoga Wednesdays",
+          "description": "Organized weekly wellness sessions to support mental health.",
+          "image": "../assets/images/placeholder.png",
+          "upvotes": 0
+        },
+        {
+          "id": 1,
+          "title": "Culture Champion",
+          "description": "Led initiatives to make our hybrid workspace more inclusive.",
+          "image": "../assets/images/placeholder.png",
+          "upvotes": 9
+        }
+      ]
+    }
+  ]
+}

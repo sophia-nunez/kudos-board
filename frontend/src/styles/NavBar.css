@@ -17,9 +17,11 @@ nav {
 .filter-container {
   button {
     background-color: var(--background-color);
+    border: 1px solid var(--secondary-color);
   }
 
   button:hover {
     background-color: var(--hover-color);
+    border: 1px solid var(--primary-color);
   }
 }

@@ -1,17 +1,74 @@
+import NavBar from "./NavBar";
 import Board from "./Board";
+import CreateModal from "./CreateModal.jsx";
 import "../styles/main.css";
 import "../styles/HomePage.css";
+import { useState, useEffect, useRef } from "react";
+import { fetchBoards } from "./../utils.js";
 
 const HomePage = () => {
+  const [boardList, setBoardList] = useState(Array());
+  const [modalOpen, setModalOpen] = useState(false);
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    loadHomePage();
+  }, []);
+
+  const loadHomePage = async () => {
+    const boards = await fetchBoards();
+    setBoardList(boards);
+
+    // TODO: if boards is empty, return something to client
+  };
+
+  const openCreateModal = () => {
+    setModalOpen(true);
+  };
+
+  // closes modal on window click off of modal or on span
+  useEffect(() => {
+    function handleWindowClick(event) {
+      const span = document.getElementsByClassName("close")[0];
+      if (event.target === span) {
+        setModalOpen(false);
+      }
+      if (modalRef.current && event.target === modalRef.current) {
+        setModalOpen(false);
+      }
+    }
+
+    window.addEventListener("click", handleWindowClick);
+
+    return () => {
+      window.removeEventListener("click", handleWindowClick);
+    };
+  }, []);
+
   return (
-    <main className="board-page">
-      <h2> Boards</h2>
-      <button>Create a New Board</button>
-      <section className="board-list">
-        <Board />
-        <Board />
-      </section>
-    </main>
+    <>
+      <NavBar />
+      <main className="board-page">
+        <h2> Boards</h2>
+        <button onClick={openCreateModal}>Create a New Board</button>
+        <section className="board-list">
+          {boardList &&
+            boardList.map((board) => {
+              return (
+                <Board
+                  key={board.id}
+                  id={board.id}
+                  name={board.name}
+                  description={board.description}
+                  image={board.image}
+                  cards={board.cards}
+                />
+              );
+            })}
+        </section>
+      </main>
+      {modalOpen && <CreateModal reference={modalRef} />}
+    </>
   );
 };
 

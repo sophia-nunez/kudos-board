@@ -1,16 +1,55 @@
-import { useLoaderData } from "react-router";
+import { useState, useEffect } from "react";
+import { NavLink, useLoaderData } from "react-router";
+import { IoArrowBackCircleSharp } from "react-icons/io5";
 import Card from "./Card";
+import { fetchBoardById } from "./../utils.js";
 import "../styles/main.css";
 import "../styles/BoardPage.css";
 
 const BoardPage = () => {
   let data = useLoaderData();
+  const [board, setBoard] = useState({});
+  const [cards, setCards] = useState(Array());
+  const id = data.id;
+
+  useEffect(() => {
+    loadBoardPage();
+  }, []);
+
+  const loadBoardPage = async () => {
+    const board = await fetchBoardById(id);
+
+    setBoard(board);
+    setCards(board.cards);
+
+    // TODO: if board is empty or not found, return something to client
+  };
 
   return (
     <main>
-      <h2>Board Name: {data.id}</h2>
+      <div className="page-info">
+        <NavLink to="/" className="back-btn" end>
+          <IoArrowBackCircleSharp />
+        </NavLink>
+        <h2>{board.title}</h2>
+        <p></p>
+      </div>
+      <p>{board.description}</p>
       <section className="card-list">
-        <Card />
+        {cards &&
+          cards.length > 0 &&
+          cards.map((card) => {
+            return (
+              <Card
+                key={card.id}
+                id={card.id}
+                title={card.title}
+                description={card.description}
+                image={card.image}
+                upvotes={card.upvotes}
+              />
+            );
+          })}
       </section>
     </main>
   );

@@ -3,15 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import HomePage from "./components/HomePage";
 import Header from "./components/Header";
-import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import BoardPage from "./components/BoardPage";
+import { useState } from "react";
 
 function Root() {
   return (
     <>
       <Header />
-      <NavBar />
       <Outlet />
       <Footer />
     </>
