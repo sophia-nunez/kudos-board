@@ -6,13 +6,13 @@
   --primary-color: #1b1238;
   --secondary-color: #e9e3ff;
   --hover-color: #787093;
-  --background-color: #242424;
+  --background-color: rgb(38, 34, 43);
   --text-color: #ffffff;
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: var(--text-color);
   background-color: var(--background-color);
 }
 
@@ -22,22 +22,27 @@
     --background-color: #ffffff;
     --primary-color: #b9a7f2;
     --secondary-color: #1b1238;
+    --hover-color: #e8e2ff;
   }
   a:hover {
     color: #747bff;
   }
 }
 
+body {
+  margin: 0px;
+}
+
 button {
   background-color: var(--primary-color);
   color: var(--secondary-color);
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--secondary-color);
   border-radius: 5px;
   padding: 0.4rem 0.6rem;
 }
 
 button:hover {
   background-color: var(--hover-color);
-  border: 1px solid var(--secondary-color);
-  color: white;
+  border: 1px solid var(--primary-color);
+  color: var(--text-color);
 }

@@ -1,7 +1,7 @@
 import Board from "./Board";
 import "../styles/main.css";
 
-const BoardsList = () => {
+const HomePage = () => {
   return (
     <main className="board-page">
       <h2> Boards</h2>
@@ -14,4 +14,4 @@ const BoardsList = () => {
   );
 };
 
-export default BoardsList;
+export default HomePage;
