@@ -10,8 +10,8 @@ module.exports = {
     return cards;
   },
 
-  async findById(boardId, cardId) {
-    const cards = await prisma.card.findUnique({ where: { boardId, cardId } });
+  async findById(boardId, id) {
+    const card = await prisma.card.findUnique({ where: { boardId, id } });
     return card;
   },
 

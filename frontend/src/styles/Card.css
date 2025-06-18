@@ -17,3 +17,8 @@
     height: auto;
   }
 }
+
+.edit-buttons {
+  margin-top: auto;
+  margin-bottom: 5px;
+}

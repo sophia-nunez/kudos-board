@@ -5,6 +5,7 @@ const SearchBar = ({ searchType, loadPage, handleSearch }) => {
   const [query, setQuery] = useState("");
 
   const updateSearch = async (event) => {
+    // TODO: what happens if user inputs smth like "   "
     const currQuery = event.target.value;
     setQuery(currQuery);
   };

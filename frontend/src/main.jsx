@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BoardPage from "./components/BoardPage";
 import { useState } from "react";
+import NotFound from "./components/NotFound";
 
 function Root() {
   return (
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    errorElement: <NotFound />,
     children: [
       { index: true, Component: HomePage },
       {

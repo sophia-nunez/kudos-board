@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { Link } from "react-router";
 import "../styles/main.css";
 import { deleteBoard } from "../utils";
 
@@ -10,7 +10,7 @@ const Board = ({ id, title, description, image, cards }) => {
   };
 
   return (
-    <NavLink to={`/board/${id}`} end>
+    <Link to={`/board/${id}`} className="board-link">
       <article className="board">
         <img className="board-image" src={image} alt="Cover image for Board" />
         <h3>{title}</h3>
@@ -22,7 +22,7 @@ const Board = ({ id, title, description, image, cards }) => {
           </button>
         </div>
       </article>
-    </NavLink>
+    </Link>
   );
 };
 
