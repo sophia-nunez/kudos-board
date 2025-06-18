@@ -135,6 +135,27 @@ server.post("/boards/:boardId/cards", async (req, res, next) => {
   }
 });
 
+// [PUT] edit card
+server.put("/boards/:boardId/cards/:cardId", async (req, res, next) => {
+  const cardId = Number(req.params.cardId);
+  const boardId = Number(req.params.boardId);
+  const changes = req.body;
+  try {
+    // Make sure the ID is valid
+    const card = await Card.findById(boardId, cardId);
+    // change should be upvotes
+    const changesValid = changes.upvotes !== undefined;
+    if (card && changesValid) {
+      const updated = await Card.update(cardId, changes);
+      res.json(updated);
+    } else {
+      next({ status: 422, message: "Invalid ID or invalid changes" });
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
 // [DELETE] /boards/:id
 server.delete("/boards/:boardId/cards/:cardId", async (req, res, next) => {
   const boardId = Number(req.params.boardId);

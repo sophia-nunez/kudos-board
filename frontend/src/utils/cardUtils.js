@@ -50,9 +50,25 @@ const deleteCard = async (boardId, cardId) => {
 };
 
 // editCard
+const editCard = async (boardId, cardId, changes) => {
+  try {
+    const response = await fetch(`${boardURL}/${boardId}/cards/${cardId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(changes),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+  } catch (error) {
+    console.error("Failed to update card:", error); // get rid of after dev
+  }
+};
 
 const createCard = (formInput) => {
   console.log("card created");
 };
 
-export { fetchCards, fetchCard, deleteCard, createCard };
+export { fetchCards, fetchCard, deleteCard, editCard, createCard };

@@ -62,6 +62,7 @@ const HomePage = () => {
                   title={board.title}
                   description={board.description}
                   image={board.imageURL}
+                  altText={board.altText}
                   cards={board.cards}
                 />
               );
