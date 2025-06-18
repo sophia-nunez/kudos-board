@@ -45,7 +45,7 @@ const BoardPage = () => {
                 id={card.id}
                 title={card.title}
                 description={card.description}
-                image={card.image}
+                image={card.imageURL}
                 upvotes={card.upvotes}
               />
             );

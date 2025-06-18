@@ -58,7 +58,7 @@ const HomePage = () => {
                 <Board
                   key={board.id}
                   id={board.id}
-                  name={board.name}
+                  title={board.title}
                   description={board.description}
                   image={board.imageURL}
                   cards={board.cards}

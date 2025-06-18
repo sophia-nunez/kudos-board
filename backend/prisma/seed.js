@@ -5,14 +5,16 @@ async function main() {
   const boards = [
     {
       title: "Inspiration Board",
-      imageURL: "https://example.com/board1.jpg",
+      imageURL:
+        "https://media0.giphy.com/media/cG9074eybq6OdTLNbO/giphy.gif?cid=e0ccb6ebek8popwjpomj6z753jojod51sydqbykdz8k17yvj&ep=v1_gifs_trending&rid=giphy.gif&ct=g",
       description: "A board full of inspiration and ideas.",
       author: "Alex",
       altText: "A mood board with colorful sticky notes",
     },
     {
       title: "Travel Goals",
-      imageURL: "https://example.com/board2.jpg",
+      imageURL:
+        "https://media1.giphy.com/media/Lv2VhwHrt6ljhvZ6LF/giphy.gif?cid=e0ccb6ebek8popwjpomj6z753jojod51sydqbykdz8k17yvj&ep=v1_gifs_trending&rid=giphy.gif&ct=g",
       description: "Places I want to visit in 2025.",
       author: "Jamie",
       altText: "A vision board with travel photos",
@@ -28,7 +30,8 @@ async function main() {
         ? [
             {
               title: "Creative Workspace",
-              imageURL: "https://example.com/card1.jpg",
+              imageURL:
+                "https://media0.giphy.com/media/jNdoPsOedksxc3Fx2a/giphy.gif?cid=e0ccb6ebek8popwjpomj6z753jojod51sydqbykdz8k17yvj&ep=v1_gifs_trending&rid=giphy.gif&ct=g",
               description: "A cozy workspace with good lighting.",
               author: "Alex",
               altText: "A modern desk setup",
@@ -36,7 +39,8 @@ async function main() {
             },
             {
               title: "Motivational Quote",
-              imageURL: "https://example.com/card2.jpg",
+              imageURL:
+                "https://media4.giphy.com/media/l1KVaj5UcbHwrBMqI/giphy.gif?cid=e0ccb6ebek8popwjpomj6z753jojod51sydqbykdz8k17yvj&ep=v1_gifs_trending&rid=giphy.gif&ct=g",
               description: '"Stay hungry, stay foolish."',
               author: "Alex",
               altText: "Typography quote on a wall",
@@ -46,7 +50,8 @@ async function main() {
         : [
             {
               title: "Bali Beach",
-              imageURL: "https://example.com/card3.jpg",
+              imageURL:
+                "https://media1.giphy.com/media/XtRvzREebFfmIBCNMh/giphy.gif?cid=e0ccb6ebek8popwjpomj6z753jojod51sydqbykdz8k17yvj&ep=v1_gifs_trending&rid=giphy.gif&ct=g",
               description: "Dreaming of clear water and palm trees.",
               author: "Jamie",
               altText: "White sand beach in Bali",
@@ -54,7 +59,8 @@ async function main() {
             },
             {
               title: "Tokyo Streets",
-              imageURL: "https://example.com/card4.jpg",
+              imageURL:
+                "https://media2.giphy.com/media/6PeNedY2QRivEooYHJ/giphy.gif?cid=e0ccb6ebek8popwjpomj6z753jojod51sydqbykdz8k17yvj&ep=v1_gifs_trending&rid=giphy.gif&ct=g",
               description: "Wandering around Shibuya at night.",
               author: "Jamie",
               altText: "Busy Tokyo crosswalk at night",

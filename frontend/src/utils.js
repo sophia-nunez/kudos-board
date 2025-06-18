@@ -75,7 +75,6 @@ const searchGifs = async (query) => {
 
 const createBoard = async (formInput) => {
   try {
-    console.log(JSON.stringify(formInput));
     const response = await fetch(boardURL, {
       method: "POST",
       headers: {
@@ -89,7 +88,19 @@ const createBoard = async (formInput) => {
   } catch (error) {
     console.error("Failed to create board:", error); // get rid of after dev
   }
-  console.log("board created");
+};
+
+const deleteBoard = async (id) => {
+  try {
+    const response = await fetch(`${boardURL}/board/${id}`, {
+      method: "DELETE",
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+  } catch (error) {
+    console.error("Failed to create board:", error); // get rid of after dev
+  }
 };
 
 const createCard = (formInput) => {
@@ -102,5 +113,7 @@ export {
   fetchGifs,
   searchGifs,
   createBoard,
+  deleteBoard,
   createCard,
+  deleteBoard,
 };
