@@ -1,6 +1,6 @@
 const API_KEY = import.meta.env.VITE_API_KEY;
 const giphyURL = "https://api.giphy.com/v1/gifs/";
-const boardURL = "http://localhost:3000/boards";
+const boardURL = import.meta.env.VITE_DB_URL;
 
 // fetchCards
 const fetchCards = async (boardId) => {
