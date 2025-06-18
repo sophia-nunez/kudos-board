@@ -10,7 +10,6 @@ server.use(cors());
 // [GET] '/'
 server.get("/", async (req, res, next) => {
   try {
-    console.log("fetch called");
     const boards = await Board.find();
     if (boards) {
       res.json(boards);
@@ -24,7 +23,8 @@ server.get("/", async (req, res, next) => {
 
 // [GET] /board/:id
 server.get("/board/:id", async (req, res, next) => {
-  const id = Number(req.params.id);
+  const id = parseInt(req.params.id);
+  console.log("id", req.params);
   try {
     const board = await Board.findById(id);
     if (board) {
@@ -152,7 +152,7 @@ server.delete("/board/:id/cards/:cardId", async (req, res, next) => {
 
 // [CATCH-ALL]
 server.use((req, res, next) => {
-  next({ status: 404, message: "Not found" });
+  next({ status: 404, message: "poop" });
 });
 
 module.exports = server;
