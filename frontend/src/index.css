@@ -23,6 +23,7 @@
   --secondary-color: #1b1238;
   --hover-color: #e8e2ff;
   background-color: var(--background-color);
+  color: var(--text-color);
 
   a:hover {
     color: #747bff;
@@ -40,6 +41,7 @@ body {
   background-color: var(--secondary-color);
   border-radius: 50px;
   margin: 10px;
+  color: var(--primary-color);
 }
 
 #toggle-mode:hover {
