@@ -74,15 +74,21 @@ const CreateModal = ({ modalType, reference, setModalOpen }) => {
             <GifSelect setSelectedGif={setSelectedGif} />
           </div>
           <div>
-            <label htmlFor="description">Description: </label>
-            <input
-              type="text"
+            <label htmlFor="description">Category: </label>
+            <select
               id="description"
               name="description"
               value={formInput.description}
               onChange={handleChange}
               required
-            />
+            >
+              <option value="" disabled={true}>
+                Select
+              </option>
+              <option value="Celebration">Celebration</option>
+              <option value="Thank you">Thank you</option>
+              <option value="Inspiration">Inspiration</option>
+            </select>
           </div>
           <div>
             <label htmlFor="author">Author (optional): </label>

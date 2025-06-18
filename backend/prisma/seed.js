@@ -7,7 +7,7 @@ async function main() {
       title: "Inspiration Board",
       imageURL:
         "https://media0.giphy.com/media/cG9074eybq6OdTLNbO/giphy.gif?cid=e0ccb6ebek8popwjpomj6z753jojod51sydqbykdz8k17yvj&ep=v1_gifs_trending&rid=giphy.gif&ct=g",
-      description: "A board full of inspiration and ideas.",
+      description: "Inspiration",
       author: "Alex",
       altText: "A mood board with colorful sticky notes",
     },
@@ -15,7 +15,7 @@ async function main() {
       title: "Travel Goals",
       imageURL:
         "https://media1.giphy.com/media/Lv2VhwHrt6ljhvZ6LF/giphy.gif?cid=e0ccb6ebek8popwjpomj6z753jojod51sydqbykdz8k17yvj&ep=v1_gifs_trending&rid=giphy.gif&ct=g",
-      description: "Places I want to visit in 2025.",
+      description: "Celebration",
       author: "Jamie",
       altText: "A vision board with travel photos",
     },
