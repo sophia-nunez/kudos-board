@@ -115,5 +115,4 @@ export {
   createBoard,
   deleteBoard,
   createCard,
-  deleteBoard,
 };
