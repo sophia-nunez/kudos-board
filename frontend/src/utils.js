@@ -75,7 +75,6 @@ const searchGifs = async (query) => {
 
 const createBoard = async (formInput) => {
   try {
-    console.log(JSON.stringify(formInput));
     const response = await fetch(boardURL, {
       method: "POST",
       headers: {
@@ -116,4 +115,5 @@ export {
   createBoard,
   deleteBoard,
   createCard,
+  deleteBoard,
 };

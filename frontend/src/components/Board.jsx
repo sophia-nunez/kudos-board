@@ -5,8 +5,10 @@ import { deleteBoard } from "../utils";
 const Board = ({ id, title, description, image, cards }) => {
   const handleDelete = (event) => {
     event.stopPropagation();
-    deleteBoard(id);
+    const id = event.target.dataset.id;
+    const result = deleteBoard(id);
   };
+
   return (
     <NavLink to={`/board/${id}`} end>
       <article className="board">

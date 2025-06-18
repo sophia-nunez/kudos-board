@@ -12,7 +12,7 @@
   animation-name: animateshrink;
   animation-duration: 1s;
 
-  image {
+  img {
     width: 200px;
     height: auto;
   }
