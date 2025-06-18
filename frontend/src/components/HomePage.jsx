@@ -60,14 +60,20 @@ const HomePage = () => {
                   id={board.id}
                   name={board.name}
                   description={board.description}
-                  image={board.image}
+                  image={board.imageURL}
                   cards={board.cards}
                 />
               );
             })}
         </section>
       </main>
-      {modalOpen && <CreateModal reference={modalRef} />}
+      {modalOpen && (
+        <CreateModal
+          modalType="create-board"
+          reference={modalRef}
+          setModalOpen={setModalOpen}
+        />
+      )}
     </>
   );
 };
