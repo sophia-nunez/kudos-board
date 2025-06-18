@@ -1,6 +1,6 @@
 const API_KEY = import.meta.env.VITE_API_KEY;
 const giphyURL = "https://api.giphy.com/v1/gifs/";
-const boardURL = "http://localhost:3000";
+const boardURL = "http://localhost:3000/boards";
 
 const fetchBoards = async () => {
   // get data here, mock data for now
@@ -19,14 +19,14 @@ const fetchBoards = async () => {
 
 const fetchBoardById = async (id) => {
   try {
-    const response = await fetch(`${boardURL}/board/${id}`);
+    const response = await fetch(`${boardURL}/${id}`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     let board = await response.json();
 
     // get cards
-    const res = await fetch(`${boardURL}/board/${id}/cards`);
+    const res = await fetch(`${boardURL}/${id}/cards`);
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -92,7 +92,7 @@ const createBoard = async (formInput) => {
 
 const deleteBoard = async (id) => {
   try {
-    const response = await fetch(`${boardURL}/board/${id}`, {
+    const response = await fetch(`${boardURL}/${id}`, {
       method: "DELETE",
     });
     if (!response.ok) {
@@ -100,6 +100,21 @@ const deleteBoard = async (id) => {
     }
   } catch (error) {
     console.error("Failed to create board:", error); // get rid of after dev
+  }
+};
+
+const searchBoards = async (query) => {
+  try {
+    const params = new URLSearchParams({ title: query });
+    const response = await fetch(`${boardURL}?title=${params.toString()}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const boards = await response.json();
+    return boards;
+  } catch (error) {
+    console.error("Failed to load kudos boards:", error); // get rid of after dev
+    return [];
   }
 };
 
@@ -114,5 +129,6 @@ export {
   searchGifs,
   createBoard,
   deleteBoard,
+  searchBoards,
   createCard,
 };

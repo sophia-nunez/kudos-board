@@ -1,13 +1,19 @@
-import '../styles/NavBar.css'
+import "../styles/NavBar.css";
+import SearchBar from "./SearchBar";
+import { searchBoards } from "../utils";
 
-const NavBar = () => {
+const NavBar = ({ loadPage, setBoardList }) => {
+  const handleSearch = async (event, query) => {
+    const boards = await searchBoards(query);
+    setBoardList(boards);
+  };
   return (
     <nav>
-      <div className="search-container">
-        <input type="search" placeholder="Search boards..." />
-        <button>Search</button>
-        <button>Clear</button>
-      </div>
+      <SearchBar
+        searchType="Boards"
+        loadPage={loadPage}
+        handleSearch={handleSearch}
+      />
       <div className="filter-container">
         <button>All</button>
         <button>Recent</button>

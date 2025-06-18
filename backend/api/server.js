@@ -8,9 +8,8 @@ server.use(express.json());
 server.use(cors());
 
 // [GET] '/'
-server.get("/", async (req, res, next) => {
+server.get("/boards", async (req, res, next) => {
   const search = req.query;
-
   try {
     // TODO check body for query params, if exist do find(body)
     const boards = await Board.find(search);
@@ -24,8 +23,8 @@ server.get("/", async (req, res, next) => {
   }
 });
 
-// [GET] /board/:id
-server.get("/board/:id", async (req, res, next) => {
+// [GET] /boards/:id
+server.get("/boards/:id", async (req, res, next) => {
   const id = parseInt(req.params.id);
   console.log("id", req.params);
   try {
@@ -41,7 +40,7 @@ server.get("/board/:id", async (req, res, next) => {
 });
 
 // [POST] '/'
-server.post("/", async (req, res, next) => {
+server.post("/boards", async (req, res, next) => {
   const newBoard = req.body;
   try {
     // Validate that board has all the required fields
@@ -64,8 +63,8 @@ server.post("/", async (req, res, next) => {
   }
 });
 
-// [DELETE] /board/:id
-server.delete("/board/:id", async (req, res, next) => {
+// [DELETE] /boards/:id
+server.delete("/boards/:id", async (req, res, next) => {
   const id = Number(req.params.id);
   try {
     const board = await Board.findById(id);
@@ -81,8 +80,8 @@ server.delete("/board/:id", async (req, res, next) => {
   }
 });
 
-// [GET] '/board/:id'
-server.get("/board/:id/cards", async (req, res, next) => {
+// [GET] '/boards/:id'
+server.get("/boards/:id/cards", async (req, res, next) => {
   const boardId = Number(req.params.id);
   try {
     const cards = await Card.findByBoard(boardId);
@@ -96,8 +95,8 @@ server.get("/board/:id/cards", async (req, res, next) => {
   }
 });
 
-// [GET] /board/:id
-server.get("/board/:id/cards/:cardId", async (req, res, next) => {
+// [GET] /boards/:id
+server.get("/boards/:id/cards/:cardId", async (req, res, next) => {
   const boardId = Number(req.params.id);
   const cardId = Number(req.params.cardId);
   try {
@@ -113,7 +112,7 @@ server.get("/board/:id/cards/:cardId", async (req, res, next) => {
 });
 
 // [POST] '/'
-server.post("/board/:id/cards", async (req, res, next) => {
+server.post("/boards/:id/cards", async (req, res, next) => {
   const newCard = { ...req.body, boardId: req.params.id };
   try {
     // Validate that board has all the required fields
@@ -136,8 +135,8 @@ server.post("/board/:id/cards", async (req, res, next) => {
   }
 });
 
-// [DELETE] /board/:id
-server.delete("/board/:id/cards/:cardId", async (req, res, next) => {
+// [DELETE] /boards/:id
+server.delete("/boards/:id/cards/:cardId", async (req, res, next) => {
   const id = Number(req.params.id);
   try {
     const board = await Card.findById(id);

@@ -6,7 +6,6 @@ nav {
   margin-bottom: 20px;
 }
 
-.search-container,
 .filter-container {
   display: flex;
   flex-direction: row;
