@@ -1,16 +1,23 @@
 import { NavLink } from "react-router";
 import "../styles/main.css";
+import { deleteBoard } from "../utils";
 
-const Board = ({ id, name, description, image, cards }) => {
+const Board = ({ id, title, description, image, cards }) => {
+  const handleDelete = (event) => {
+    event.stopPropagation();
+    deleteBoard(id);
+  };
   return (
     <NavLink to={`/board/${id}`} end>
       <article className="board">
         <img className="board-image" src={image} alt="Cover image for Board" />
-        <h3>{name}</h3>
+        <h3>{title}</h3>
         <p>{description}</p>
         <div className="edit-buttons">
           <button>View Board</button>
-          <button data-id={id}>Delete Board</button>
+          <button data-id={id} onClick={handleDelete}>
+            Delete Board
+          </button>
         </div>
       </article>
     </NavLink>
