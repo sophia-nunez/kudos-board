@@ -137,6 +137,7 @@ exports.Prisma.CardScalarFieldEnum = {
   title: 'title',
   imageURL: 'imageURL',
   description: 'description',
+  upvotes: 'upvotes',
   author: 'author',
   altText: 'altText',
   createdAt: 'createdAt',
