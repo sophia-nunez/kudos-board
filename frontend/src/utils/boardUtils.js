@@ -131,10 +131,6 @@ const filterBoards = async (filter) => {
   }
 };
 
-const createCard = (formInput) => {
-  console.log("card created");
-};
-
 export {
   fetchBoards,
   fetchBoardById,
@@ -144,5 +140,4 @@ export {
   deleteBoard,
   searchBoards,
   filterBoards,
-  createCard,
 };

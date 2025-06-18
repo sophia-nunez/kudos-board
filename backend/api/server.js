@@ -6,6 +6,7 @@ const Card = require("./card-model-prisma");
 const server = express();
 server.use(express.json());
 server.use(cors());
+// TODO: validation, incorrect shape = 422
 
 // [GET] all boards
 server.get("/boards", async (req, res, next) => {
@@ -112,7 +113,7 @@ server.get("/boards/:boardId/cards/:cardId", async (req, res, next) => {
 
 // [POST] '/'
 server.post("/boards/:boardId/cards", async (req, res, next) => {
-  const newCard = { ...req.body, boardId: req.params.boardId };
+  const newCard = { ...req.body, boardId: Number(req.params.boardId) };
   try {
     // Validate that board has all the required fields
     const newCardValid =
@@ -134,14 +135,36 @@ server.post("/boards/:boardId/cards", async (req, res, next) => {
   }
 });
 
-// [DELETE] /boards/:id
-server.delete("/boards/:id/cards/:cardId", async (req, res, next) => {
-  const id = Number(req.params.id);
+// [PUT] edit card
+server.put("/boards/:boardId/cards/:cardId", async (req, res, next) => {
+  const cardId = Number(req.params.cardId);
+  const boardId = Number(req.params.boardId);
+  const changes = req.body;
   try {
-    const card = await Card.findById(id);
+    // Make sure the ID is valid
+    const card = await Card.findById(boardId, cardId);
+    // change should be upvotes
+    const changesValid = changes.upvotes !== undefined;
+    if (card && changesValid) {
+      const updated = await Card.update(cardId, changes);
+      res.json(updated);
+    } else {
+      next({ status: 422, message: "Invalid ID or invalid changes" });
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+// [DELETE] /boards/:id
+server.delete("/boards/:boardId/cards/:cardId", async (req, res, next) => {
+  const boardId = Number(req.params.boardId);
+  const cardId = Number(req.params.cardId);
+  try {
+    const card = await Card.findById(boardId, cardId);
     if (card) {
       // TODO: also delete associated cards
-      const deleted = await Card.delete(id);
+      const deleted = await Card.delete(cardId);
       res.json(deleted);
     } else {
       next({ status: 404, message: "Card not found" });

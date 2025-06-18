@@ -6,7 +6,7 @@
   --primary-color: #1b1238;
   --secondary-color: #e9e3ff;
   --hover-color: #787093;
-  --background-color: rgb(38, 34, 43);
+  --background-color: rgb(52, 49, 56);
   --text-color: #ffffff;
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -16,14 +16,15 @@
   background-color: var(--background-color);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --text-color: #213547;
-    --background-color: #ffffff;
-    --primary-color: #b9a7f2;
-    --secondary-color: #1b1238;
-    --hover-color: #e8e2ff;
-  }
+[data-theme="light"] {
+  --text-color: #213547;
+  --background-color: #ffffff;
+  --primary-color: #b9a7f2;
+  --secondary-color: #1b1238;
+  --hover-color: #e8e2ff;
+  background-color: var(--background-color);
+  color: var(--text-color);
+
   a:hover {
     color: #747bff;
   }
@@ -31,6 +32,21 @@
 
 body {
   margin: 0px;
+}
+
+#toggle-mode {
+  position: absolute;
+  top: 0;
+  font-size: x-large;
+  background-color: var(--secondary-color);
+  border-radius: 50px;
+  margin: 10px;
+  color: var(--primary-color);
+}
+
+#toggle-mode:hover {
+  background-color: var(--hover-color);
+  cursor: pointer;
 }
 
 button {
@@ -44,4 +60,5 @@ button {
 button:hover {
   background-color: var(--hover-color);
   color: var(--text-color);
+  cursor: pointer;
 }

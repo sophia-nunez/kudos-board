@@ -1,6 +1,6 @@
 import "../styles/NavBar.css";
 import SearchBar from "./SearchBar";
-import { searchBoards, filterBoards } from "../utils";
+import { searchBoards, filterBoards } from "../utils/boardUtils";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -21,7 +21,11 @@ const NavBar = ({ loadPage, setBoardList }) => {
   };
 
   const onFilter = async (event) => {
-    setFilter(event.currentTarget.id);
+    let selected = event.currentTarget.id;
+    if (selected === "ThankYou") {
+      selected = "Thank you";
+    }
+    setFilter(selected);
   };
 
   const handleFilter = async (event) => {
@@ -29,10 +33,16 @@ const NavBar = ({ loadPage, setBoardList }) => {
       loadPage();
     } else {
       const boards = await filterBoards(filter);
+
       if (boards === "error") {
         console.error("failed to load boards");
       } else {
-        setBoardList(boards);
+        if (filter === "Recent") {
+          const slicedBoards = boards.slice(0, 6);
+          setBoardList(slicedBoards);
+        } else {
+          setBoardList(boards);
+        }
       }
     }
   };
@@ -54,7 +64,7 @@ const NavBar = ({ loadPage, setBoardList }) => {
         <button id="Celebration" onClick={onFilter}>
           Celebration
         </button>
-        <button id="Thank You" onClick={onFilter}>
+        <button id="ThankYou" onClick={onFilter}>
           Thank You
         </button>
         <button id="Inspiration" onClick={onFilter}>

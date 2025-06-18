@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchGifs, searchGifs } from "../utils";
+import { fetchGifs, searchGifs } from "../utils/boardUtils";
 import SearchBar from "./SearchBar";
 
 import "../styles/GifSelect.css";

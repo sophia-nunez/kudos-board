@@ -20,6 +20,14 @@ module.exports = {
     return created;
   },
 
+  async update(id, changes) {
+    const updated = await prisma.card.update({
+      data: changes,
+      where: { id: id },
+    });
+    return updated;
+  },
+
   async delete(id) {
     const deleted = await prisma.card.delete({ where: { id } });
     return deleted;

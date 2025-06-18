@@ -5,8 +5,8 @@ import HomePage from "./components/HomePage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BoardPage from "./components/BoardPage";
-import { useState } from "react";
 import NotFound from "./components/NotFound";
+import { ThemeProvider, useTheme } from "./components/ThemeContext";
 
 function Root() {
   return (
@@ -37,6 +37,26 @@ const router = createBrowserRouter([
   },
 ]);
 
+const AppContent = () => {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <div data-theme={theme}>
+      <button id="toggle-mode" onClick={toggleTheme}>
+        {theme === "light" ? "☀️" : "🌖"}
+      </button>
+      {<RouterProvider router={router} />}
+    </div>
+  );
+};
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  );
+}
 const root = document.getElementById("root");
 
-ReactDOM.createRoot(root).render(<RouterProvider router={router} />);
+ReactDOM.createRoot(root).render(<App />);

@@ -21,7 +21,6 @@
   width: 200px;
   height: 300px;
   padding: 0.3em;
-  border: 1px solid black;
   border-radius: 10px;
 
   animation-name: animateshrink;
@@ -37,6 +36,7 @@
   .board-image {
     width: 200px;
     height: auto;
+    margin-bottom: auto;
   }
 }
 
