@@ -26,7 +26,6 @@ server.get("/boards", async (req, res, next) => {
 // [GET] /boards/:id
 server.get("/boards/:id", async (req, res, next) => {
   const id = parseInt(req.params.id);
-  console.log("id", req.params);
   try {
     const board = await Board.findById(id);
     if (board) {
@@ -95,7 +94,7 @@ server.get("/boards/:boardId/cards", async (req, res, next) => {
   }
 });
 
-// [GET] /boards/:id
+// [GET] card by id
 server.get("/boards/:boardId/cards/:cardId", async (req, res, next) => {
   const boardId = Number(req.params.boardId);
   const cardId = Number(req.params.cardId);
@@ -139,8 +138,8 @@ server.post("/boards/:boardId/cards", async (req, res, next) => {
 server.delete("/boards/:id/cards/:cardId", async (req, res, next) => {
   const id = Number(req.params.id);
   try {
-    const board = await Card.findById(id);
-    if (board) {
+    const card = await Card.findById(id);
+    if (card) {
       // TODO: also delete associated cards
       const deleted = await Card.delete(id);
       res.json(deleted);
