@@ -10,7 +10,6 @@ server.use(cors());
 // [GET] '/'
 server.get("/", async (req, res, next) => {
   try {
-    console.log("fetch called");
     const boards = await Board.find();
     if (boards) {
       res.json(boards);

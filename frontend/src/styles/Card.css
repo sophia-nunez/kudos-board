@@ -12,8 +12,8 @@
   animation-name: animateshrink;
   animation-duration: 1s;
 
-  image {
-    width: fill;
-    aspect-ratio: 1 / 1.5;
+  img {
+    width: 200px;
+    height: auto;
   }
 }
