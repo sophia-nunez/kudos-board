@@ -5,7 +5,22 @@ const prisma = new PrismaClient();
 
 module.exports = {
   //boards
-  async find(where) {
+  async find(search) {
+    const where = {};
+
+    if (search.title) {
+      where.title = {
+        contains: search.title,
+        mode: "insensitive",
+      };
+    }
+
+    if (search.description) {
+      where.description = {
+        contains: search.description,
+      };
+    }
+
     const boards = await prisma.board.findMany({ where: where });
     return boards;
   },

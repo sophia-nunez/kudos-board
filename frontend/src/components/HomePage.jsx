@@ -52,6 +52,7 @@ const HomePage = () => {
         <h2> Boards</h2>
         <button onClick={openCreateModal}>Create a New Board</button>
         <section className="board-list">
+          {boardList.length === 0 && <p>No boards to display.</p>}
           {boardList &&
             boardList.map((board) => {
               return (

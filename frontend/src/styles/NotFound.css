@@ -1,0 +1,7 @@
+.not-found {
+  margin-top: auto;
+  text-align: center;
+  * {
+    margin: 20px;
+  }
+}

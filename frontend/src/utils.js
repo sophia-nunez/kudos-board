@@ -106,15 +106,28 @@ const deleteBoard = async (id) => {
 const searchBoards = async (query) => {
   try {
     const params = new URLSearchParams({ title: query });
-    const response = await fetch(`${boardURL}?title=${params.toString()}`);
+    const response = await fetch(`${boardURL}?${params.toString()}`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const boards = await response.json();
     return boards;
   } catch (error) {
-    console.error("Failed to load kudos boards:", error); // get rid of after dev
-    return [];
+    return "error";
+  }
+};
+
+const filterBoards = async (filter) => {
+  try {
+    const params = new URLSearchParams({ description: filter });
+    const response = await fetch(`${boardURL}?${params.toString()}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const boards = await response.json();
+    return boards;
+  } catch (error) {
+    return "error";
   }
 };
 
@@ -130,5 +143,6 @@ export {
   createBoard,
   deleteBoard,
   searchBoards,
+  filterBoards,
   createCard,
 };

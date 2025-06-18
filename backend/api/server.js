@@ -7,13 +7,13 @@ const server = express();
 server.use(express.json());
 server.use(cors());
 
-// [GET] '/'
+// [GET] all boards
 server.get("/boards", async (req, res, next) => {
   const search = req.query;
   try {
     // TODO check body for query params, if exist do find(body)
     const boards = await Board.find(search);
-    if (boards.length) {
+    if (boards) {
       res.json(boards);
     } else {
       next({ status: 404, message: `No boards found` });
@@ -23,7 +23,7 @@ server.get("/boards", async (req, res, next) => {
   }
 });
 
-// [GET] /boards/:id
+// [GET] one board by id
 server.get("/boards/:id", async (req, res, next) => {
   const id = parseInt(req.params.id);
   try {
@@ -153,7 +153,7 @@ server.delete("/boards/:id/cards/:cardId", async (req, res, next) => {
 
 // [CATCH-ALL]
 server.use((req, res, next) => {
-  next({ status: 404, message: "poop" });
+  res.status(404).json();
 });
 
 module.exports = server;

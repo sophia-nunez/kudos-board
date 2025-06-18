@@ -43,6 +43,5 @@ button {
 
 button:hover {
   background-color: var(--hover-color);
-  border: 1px solid var(--primary-color);
   color: var(--text-color);
 }
