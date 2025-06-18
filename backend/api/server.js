@@ -9,9 +9,12 @@ server.use(cors());
 
 // [GET] '/'
 server.get("/", async (req, res, next) => {
+  const search = req.query;
+
   try {
-    const boards = await Board.find();
-    if (boards) {
+    // TODO check body for query params, if exist do find(body)
+    const boards = await Board.find(search);
+    if (boards.length) {
       res.json(boards);
     } else {
       next({ status: 404, message: `No boards found` });

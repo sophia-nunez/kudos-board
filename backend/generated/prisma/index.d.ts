@@ -2148,11 +2148,13 @@ export namespace Prisma {
   export type CardAvgAggregateOutputType = {
     id: number | null
     boardId: number | null
+    upvotes: number | null
   }
 
   export type CardSumAggregateOutputType = {
     id: number | null
     boardId: number | null
+    upvotes: number | null
   }
 
   export type CardMinAggregateOutputType = {
@@ -2161,6 +2163,7 @@ export namespace Prisma {
     title: string | null
     imageURL: string | null
     description: string | null
+    upvotes: number | null
     author: string | null
     altText: string | null
     createdAt: Date | null
@@ -2173,6 +2176,7 @@ export namespace Prisma {
     title: string | null
     imageURL: string | null
     description: string | null
+    upvotes: number | null
     author: string | null
     altText: string | null
     createdAt: Date | null
@@ -2185,6 +2189,7 @@ export namespace Prisma {
     title: number
     imageURL: number
     description: number
+    upvotes: number
     author: number
     altText: number
     createdAt: number
@@ -2196,11 +2201,13 @@ export namespace Prisma {
   export type CardAvgAggregateInputType = {
     id?: true
     boardId?: true
+    upvotes?: true
   }
 
   export type CardSumAggregateInputType = {
     id?: true
     boardId?: true
+    upvotes?: true
   }
 
   export type CardMinAggregateInputType = {
@@ -2209,6 +2216,7 @@ export namespace Prisma {
     title?: true
     imageURL?: true
     description?: true
+    upvotes?: true
     author?: true
     altText?: true
     createdAt?: true
@@ -2221,6 +2229,7 @@ export namespace Prisma {
     title?: true
     imageURL?: true
     description?: true
+    upvotes?: true
     author?: true
     altText?: true
     createdAt?: true
@@ -2233,6 +2242,7 @@ export namespace Prisma {
     title?: true
     imageURL?: true
     description?: true
+    upvotes?: true
     author?: true
     altText?: true
     createdAt?: true
@@ -2332,6 +2342,7 @@ export namespace Prisma {
     title: string
     imageURL: string
     description: string
+    upvotes: number
     author: string | null
     altText: string
     createdAt: Date
@@ -2363,6 +2374,7 @@ export namespace Prisma {
     title?: boolean
     imageURL?: boolean
     description?: boolean
+    upvotes?: boolean
     author?: boolean
     altText?: boolean
     createdAt?: boolean
@@ -2376,6 +2388,7 @@ export namespace Prisma {
     title?: boolean
     imageURL?: boolean
     description?: boolean
+    upvotes?: boolean
     author?: boolean
     altText?: boolean
     createdAt?: boolean
@@ -2389,6 +2402,7 @@ export namespace Prisma {
     title?: boolean
     imageURL?: boolean
     description?: boolean
+    upvotes?: boolean
     author?: boolean
     altText?: boolean
     createdAt?: boolean
@@ -2402,13 +2416,14 @@ export namespace Prisma {
     title?: boolean
     imageURL?: boolean
     description?: boolean
+    upvotes?: boolean
     author?: boolean
     altText?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "boardId" | "title" | "imageURL" | "description" | "author" | "altText" | "createdAt" | "updatedAt", ExtArgs["result"]["card"]>
+  export type CardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "boardId" | "title" | "imageURL" | "description" | "upvotes" | "author" | "altText" | "createdAt" | "updatedAt", ExtArgs["result"]["card"]>
   export type CardInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     board?: boolean | BoardDefaultArgs<ExtArgs>
   }
@@ -2430,6 +2445,7 @@ export namespace Prisma {
       title: string
       imageURL: string
       description: string
+      upvotes: number
       author: string | null
       altText: string
       createdAt: Date
@@ -2863,6 +2879,7 @@ export namespace Prisma {
     readonly title: FieldRef<"Card", 'String'>
     readonly imageURL: FieldRef<"Card", 'String'>
     readonly description: FieldRef<"Card", 'String'>
+    readonly upvotes: FieldRef<"Card", 'Int'>
     readonly author: FieldRef<"Card", 'String'>
     readonly altText: FieldRef<"Card", 'String'>
     readonly createdAt: FieldRef<"Card", 'DateTime'>
@@ -3315,6 +3332,7 @@ export namespace Prisma {
     title: 'title',
     imageURL: 'imageURL',
     description: 'description',
+    upvotes: 'upvotes',
     author: 'author',
     altText: 'altText',
     createdAt: 'createdAt',
@@ -3493,6 +3511,7 @@ export namespace Prisma {
     title?: StringFilter<"Card"> | string
     imageURL?: StringFilter<"Card"> | string
     description?: StringFilter<"Card"> | string
+    upvotes?: IntFilter<"Card"> | number
     author?: StringNullableFilter<"Card"> | string | null
     altText?: StringFilter<"Card"> | string
     createdAt?: DateTimeFilter<"Card"> | Date | string
@@ -3506,6 +3525,7 @@ export namespace Prisma {
     title?: SortOrder
     imageURL?: SortOrder
     description?: SortOrder
+    upvotes?: SortOrder
     author?: SortOrderInput | SortOrder
     altText?: SortOrder
     createdAt?: SortOrder
@@ -3522,6 +3542,7 @@ export namespace Prisma {
     title?: StringFilter<"Card"> | string
     imageURL?: StringFilter<"Card"> | string
     description?: StringFilter<"Card"> | string
+    upvotes?: IntFilter<"Card"> | number
     author?: StringNullableFilter<"Card"> | string | null
     altText?: StringFilter<"Card"> | string
     createdAt?: DateTimeFilter<"Card"> | Date | string
@@ -3535,6 +3556,7 @@ export namespace Prisma {
     title?: SortOrder
     imageURL?: SortOrder
     description?: SortOrder
+    upvotes?: SortOrder
     author?: SortOrderInput | SortOrder
     altText?: SortOrder
     createdAt?: SortOrder
@@ -3555,6 +3577,7 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Card"> | string
     imageURL?: StringWithAggregatesFilter<"Card"> | string
     description?: StringWithAggregatesFilter<"Card"> | string
+    upvotes?: IntWithAggregatesFilter<"Card"> | number
     author?: StringNullableWithAggregatesFilter<"Card"> | string | null
     altText?: StringWithAggregatesFilter<"Card"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Card"> | Date | string
@@ -3643,6 +3666,7 @@ export namespace Prisma {
     title: string
     imageURL: string
     description: string
+    upvotes?: number
     author?: string | null
     altText: string
     createdAt?: Date | string
@@ -3656,6 +3680,7 @@ export namespace Prisma {
     title: string
     imageURL: string
     description: string
+    upvotes?: number
     author?: string | null
     altText: string
     createdAt?: Date | string
@@ -3666,6 +3691,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     imageURL?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    upvotes?: IntFieldUpdateOperationsInput | number
     author?: NullableStringFieldUpdateOperationsInput | string | null
     altText?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3679,6 +3705,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     imageURL?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    upvotes?: IntFieldUpdateOperationsInput | number
     author?: NullableStringFieldUpdateOperationsInput | string | null
     altText?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3691,6 +3718,7 @@ export namespace Prisma {
     title: string
     imageURL: string
     description: string
+    upvotes?: number
     author?: string | null
     altText: string
     createdAt?: Date | string
@@ -3701,6 +3729,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     imageURL?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    upvotes?: IntFieldUpdateOperationsInput | number
     author?: NullableStringFieldUpdateOperationsInput | string | null
     altText?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3713,6 +3742,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     imageURL?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    upvotes?: IntFieldUpdateOperationsInput | number
     author?: NullableStringFieldUpdateOperationsInput | string | null
     altText?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3904,6 +3934,7 @@ export namespace Prisma {
     title?: SortOrder
     imageURL?: SortOrder
     description?: SortOrder
+    upvotes?: SortOrder
     author?: SortOrder
     altText?: SortOrder
     createdAt?: SortOrder
@@ -3913,6 +3944,7 @@ export namespace Prisma {
   export type CardAvgOrderByAggregateInput = {
     id?: SortOrder
     boardId?: SortOrder
+    upvotes?: SortOrder
   }
 
   export type CardMaxOrderByAggregateInput = {
@@ -3921,6 +3953,7 @@ export namespace Prisma {
     title?: SortOrder
     imageURL?: SortOrder
     description?: SortOrder
+    upvotes?: SortOrder
     author?: SortOrder
     altText?: SortOrder
     createdAt?: SortOrder
@@ -3933,6 +3966,7 @@ export namespace Prisma {
     title?: SortOrder
     imageURL?: SortOrder
     description?: SortOrder
+    upvotes?: SortOrder
     author?: SortOrder
     altText?: SortOrder
     createdAt?: SortOrder
@@ -3942,6 +3976,7 @@ export namespace Prisma {
   export type CardSumOrderByAggregateInput = {
     id?: SortOrder
     boardId?: SortOrder
+    upvotes?: SortOrder
   }
 
   export type CardCreateNestedManyWithoutBoardInput = {
@@ -4160,6 +4195,7 @@ export namespace Prisma {
     title: string
     imageURL: string
     description: string
+    upvotes?: number
     author?: string | null
     altText: string
     createdAt?: Date | string
@@ -4171,6 +4207,7 @@ export namespace Prisma {
     title: string
     imageURL: string
     description: string
+    upvotes?: number
     author?: string | null
     altText: string
     createdAt?: Date | string
@@ -4212,6 +4249,7 @@ export namespace Prisma {
     title?: StringFilter<"Card"> | string
     imageURL?: StringFilter<"Card"> | string
     description?: StringFilter<"Card"> | string
+    upvotes?: IntFilter<"Card"> | number
     author?: StringNullableFilter<"Card"> | string | null
     altText?: StringFilter<"Card"> | string
     createdAt?: DateTimeFilter<"Card"> | Date | string
@@ -4281,6 +4319,7 @@ export namespace Prisma {
     title: string
     imageURL: string
     description: string
+    upvotes?: number
     author?: string | null
     altText: string
     createdAt?: Date | string
@@ -4291,6 +4330,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     imageURL?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    upvotes?: IntFieldUpdateOperationsInput | number
     author?: NullableStringFieldUpdateOperationsInput | string | null
     altText?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4302,6 +4342,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     imageURL?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    upvotes?: IntFieldUpdateOperationsInput | number
     author?: NullableStringFieldUpdateOperationsInput | string | null
     altText?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4313,6 +4354,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     imageURL?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    upvotes?: IntFieldUpdateOperationsInput | number
     author?: NullableStringFieldUpdateOperationsInput | string | null
     altText?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
