@@ -2,7 +2,7 @@ import "../styles/main.css";
 import "../styles/Card.css";
 import { useEffect } from "react";
 
-const Card = ({ id, title, description, image, upvotes }) => {
+const Card = ({ id, title, description, image, upvotes, handleDelete }) => {
   const upvoteCard = () => {
     console.log("upvoted: " + { upvotes });
   };
@@ -14,7 +14,7 @@ const Card = ({ id, title, description, image, upvotes }) => {
       <img className="card-image" src={image} alt="Cover image for Card" />
       <div className="edit-buttons">
         <button onClick={upvoteCard}>Upvote: {upvotes}</button>
-        <button>Delete</button>
+        <button onClick={(e) => handleDelete(e, id)}>Delete</button>
       </div>
     </article>
   );

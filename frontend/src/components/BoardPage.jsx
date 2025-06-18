@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { NavLink, useLoaderData } from "react-router";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import Card from "./Card";
-import { fetchBoardById } from "./../utils.js";
+import { fetchBoardById } from "../utils/boardUtils.js";
+import { deleteCard } from "../utils/cardUtils.js";
 import "../styles/main.css";
 import "../styles/BoardPage.css";
 
@@ -23,6 +24,11 @@ const BoardPage = () => {
     setCards(board.cards);
 
     // TODO: if board is empty or not found, return something to client
+  };
+
+  const handleDelete = (e, cardId) => {
+    deleteCard(id, cardId);
+    console.log("deleted card " + cardId + " from board " + id);
   };
 
   return (
@@ -47,6 +53,7 @@ const BoardPage = () => {
                 description={card.description}
                 image={card.imageURL}
                 upvotes={card.upvotes}
+                handleDelete={handleDelete}
               />
             );
           })}

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import "../styles/Modal.css";
-import { fetchGifs, searchGifs } from "../utils";
+import { fetchGifs, searchGifs } from "../utils/boardUtils";
 import GifSelect from "./GifSelect";
-import { createBoard, createCard } from "../utils";
+import { createBoard } from "../utils/boardUtils";
+import { createCard } from "../utils/cardUtils";
 
 const CreateModal = ({ modalType, reference, setModalOpen }) => {
   const [selectedGif, setSelectedGif] = useState(

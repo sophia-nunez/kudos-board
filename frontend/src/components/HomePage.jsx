@@ -4,7 +4,7 @@ import CreateModal from "./CreateModal.jsx";
 import "../styles/main.css";
 import "../styles/HomePage.css";
 import { useState, useEffect, useRef } from "react";
-import { fetchBoards } from "./../utils.js";
+import { fetchBoards } from "../utils/boardUtils.js";
 
 const HomePage = () => {
   const [boardList, setBoardList] = useState(Array());

@@ -1,6 +1,6 @@
 import "../styles/NavBar.css";
 import SearchBar from "./SearchBar";
-import { searchBoards, filterBoards } from "../utils";
+import { searchBoards, filterBoards } from "../utils/boardUtils";
 import { useState } from "react";
 import { useEffect } from "react";
 
