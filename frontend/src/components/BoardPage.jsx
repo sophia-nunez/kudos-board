@@ -85,6 +85,7 @@ const BoardPage = () => {
       </main>
       {modalOpen && (
         <CreateModal
+          boardId={id}
           modalType="create-card"
           reference={modalRef}
           setModalOpen={setModalOpen}

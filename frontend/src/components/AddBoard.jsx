@@ -3,7 +3,7 @@ import "../styles/Modal.css";
 import GifSelect from "./GifSelect";
 import { createBoard } from "../utils/boardUtils";
 
-const AddBoard = ({ modalType, setModalOpen }) => {
+const AddBoard = ({ setModalOpen }) => {
   const [selectedGif, setSelectedGif] = useState(
     "https://giphy.com/embed/tFSqMSMnzPRTAdvKyr"
   );

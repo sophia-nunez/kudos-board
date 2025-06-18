@@ -3,11 +3,12 @@ import "../styles/Modal.css";
 import GifSelect from "./GifSelect";
 import { createCard } from "../utils/cardUtils";
 
-const AddCard = () => {
+const AddCard = ({ setModalOpen, boardId }) => {
   const [selectedGif, setSelectedGif] = useState(
     "https://giphy.com/embed/tFSqMSMnzPRTAdvKyr"
   );
   const [formInput, setFormInput] = useState({
+    boardId,
     title: "",
     description: "",
     author: "",
@@ -65,7 +66,7 @@ const AddCard = () => {
         <GifSelect setSelectedGif={setSelectedGif} />
       </div>
       <div>
-        <label htmlFor="description">Category: </label>
+        <label htmlFor="description">Description: </label>
         <input
           type="text"
           id="description"
@@ -86,7 +87,7 @@ const AddCard = () => {
         />
       </div>
 
-      <button type="submit">Create Board</button>
+      <button type="submit">Create Card</button>
     </form>
   );
 };

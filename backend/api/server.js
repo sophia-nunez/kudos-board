@@ -113,7 +113,7 @@ server.get("/boards/:boardId/cards/:cardId", async (req, res, next) => {
 
 // [POST] '/'
 server.post("/boards/:boardId/cards", async (req, res, next) => {
-  const newCard = { ...req.body, boardId: req.params.boardId };
+  const newCard = { ...req.body, boardId: Number(req.params.boardId) };
   try {
     // Validate that board has all the required fields
     const newCardValid =

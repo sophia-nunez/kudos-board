@@ -7,7 +7,7 @@ import { createCard } from "../utils/cardUtils";
 import AddBoard from "./AddBoard";
 import AddCard from "./AddCard";
 
-const CreateModal = ({ modalType, reference, setModalOpen }) => {
+const CreateModal = ({ modalType, reference, setModalOpen, boardId }) => {
   return (
     <aside id="create-modal" className="modal" ref={reference}>
       <span className="close">&times;</span>
@@ -16,7 +16,7 @@ const CreateModal = ({ modalType, reference, setModalOpen }) => {
           <AddBoard modalType={modalType} setModalOpen={setModalOpen} />
         )}
         {modalType === "create-card" && (
-          <AddCard modalType={modalType} setModalOpen={setModalOpen} />
+          <AddCard boardId={boardId} setModalOpen={setModalOpen} />
         )}
       </section>
     </aside>
