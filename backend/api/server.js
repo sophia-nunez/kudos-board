@@ -81,8 +81,8 @@ server.delete("/boards/:id", async (req, res, next) => {
 });
 
 // [GET] '/boards/:id'
-server.get("/boards/:id/cards", async (req, res, next) => {
-  const boardId = Number(req.params.id);
+server.get("/boards/:boardId/cards", async (req, res, next) => {
+  const boardId = Number(req.params.boardId);
   try {
     const cards = await Card.findByBoard(boardId);
     if (cards) {
@@ -96,8 +96,8 @@ server.get("/boards/:id/cards", async (req, res, next) => {
 });
 
 // [GET] /boards/:id
-server.get("/boards/:id/cards/:cardId", async (req, res, next) => {
-  const boardId = Number(req.params.id);
+server.get("/boards/:boardId/cards/:cardId", async (req, res, next) => {
+  const boardId = Number(req.params.boardId);
   const cardId = Number(req.params.cardId);
   try {
     const card = await Card.findById(boardId, cardId);
@@ -112,8 +112,8 @@ server.get("/boards/:id/cards/:cardId", async (req, res, next) => {
 });
 
 // [POST] '/'
-server.post("/boards/:id/cards", async (req, res, next) => {
-  const newCard = { ...req.body, boardId: req.params.id };
+server.post("/boards/:boardId/cards", async (req, res, next) => {
+  const newCard = { ...req.body, boardId: req.params.boardId };
   try {
     // Validate that board has all the required fields
     const newCardValid =
