@@ -7,6 +7,7 @@ module.exports = {
   //boards
   async find(search) {
     const where = {};
+    let orderBy = {};
 
     if (search.title) {
       where.title = {
@@ -16,12 +17,16 @@ module.exports = {
     }
 
     if (search.description) {
-      where.description = {
-        contains: search.description,
-      };
+      if (search.description === "Recent") {
+        orderBy = { createdAt: "desc" };
+      } else {
+        where.description = {
+          contains: search.description,
+        };
+      }
     }
 
-    const boards = await prisma.board.findMany({ where: where });
+    const boards = await prisma.board.findMany({ where: where, orderBy });
     return boards;
   },
 
