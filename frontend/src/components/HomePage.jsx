@@ -67,7 +67,7 @@ const HomePage = () => {
             })}
         </section>
       </main>
-      {modalOpen && <CreateModal reference={modalRef} />}
+      {modalOpen && <CreateModal modalOpen={modalOpen} reference={modalRef} />}
     </>
   );
 };

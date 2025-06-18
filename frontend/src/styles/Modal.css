@@ -34,6 +34,14 @@
   animation-name: animatetop;
   animation-duration: 0.8s;
   box-shadow: 0px 0px 15px 5px var(0, 0, 0, 0.5);
+
+  div {
+    max-height: 50%;
+  }
+
+  input {
+    width: 90%;
+  }
 }
 
 .close {

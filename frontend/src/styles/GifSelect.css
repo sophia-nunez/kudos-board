@@ -1,0 +1,25 @@
+.gif-select {
+  height: 100%;
+  overflow: scroll;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  img {
+    width: 150px;
+  }
+  button {
+    margin: 0.3rem;
+  }
+
+  .selected {
+    background-color: var(--secondary-color);
+  }
+
+  .gif-search {
+    align-self: center;
+    width: 150px;
+    margin: 0.3rem;
+  }
+}
