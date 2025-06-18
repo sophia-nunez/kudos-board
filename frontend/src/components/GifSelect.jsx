@@ -19,8 +19,13 @@ const GifSelect = ({ modalOpen, setSelectedGif }) => {
 
   const selectGif = (event, gifURL, gifId) => {
     event.stopPropagation();
-    setSelectedGif(gifURL);
-    setSelectedId(gifId);
+    if (gifId === selectedId) {
+      setSelectedId("");
+      setSelectedGif("");
+    } else {
+      setSelectedGif(gifURL);
+      setSelectedId(gifId);
+    }
   };
 
   const handleSearch = async (event, query) => {
@@ -31,26 +36,29 @@ const GifSelect = ({ modalOpen, setSelectedGif }) => {
   };
 
   return (
-    <article className="gif-select">
+    <section className="gifs">
       <SearchBar
+        className="search-bar"
         searchType="GIFs"
         handleSearch={handleSearch}
         loadPage={loadDefaultGifs}
       />
-      {gifs &&
-        gifs.map((gif, index) => {
-          const url = gif.images.original.url;
-          return (
-            <button
-              className={gif.id === selectedId ? "selected" : ""}
-              key={index}
-              onClick={(e) => selectGif(e, url, gif.id)}
-            >
-              <img src={url} alt="gif" />
-            </button>
-          );
-        })}
-    </article>
+      <article className="gif-select">
+        {gifs &&
+          gifs.map((gif, index) => {
+            const url = gif.images.original.url;
+            return (
+              <button
+                className={gif.id === selectedId ? "selected" : ""}
+                key={index}
+                onClick={(e) => selectGif(e, url, gif.id)}
+              >
+                <img src={url} alt="gif" />
+              </button>
+            );
+          })}
+      </article>
+    </section>
   );
 };
 
