@@ -89,6 +89,7 @@ const BoardPage = () => {
                   title={card.title}
                   description={card.description}
                   image={card.imageURL}
+                  author={card.author}
                   upvotes={card.upvotes}
                   altText={card.altText}
                 />

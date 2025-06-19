@@ -11,6 +11,7 @@ const Card = ({
   description,
   image,
   altText,
+  author,
   upvotes,
   openCommentModal,
 }) => {
@@ -36,6 +37,7 @@ const Card = ({
       <h3>{title}</h3>
       <p>{description}</p>
       <img className="card-image" src={image} alt={altText} />
+      {author && <p>{author}</p>}
       <div className="edit-buttons">
         <button onClick={upvoteCard}>Upvote: {displayedUpvotes}</button>
         <button onClick={handleDelete}>Delete</button>
