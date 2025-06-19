@@ -127,8 +127,9 @@ exports.Prisma.BoardScalarFieldEnum = {
   description: 'description',
   author: 'author',
   altText: 'altText',
+  pinned: 'pinned',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  pinnedAt: 'pinnedAt'
 };
 
 exports.Prisma.CardScalarFieldEnum = {
@@ -140,6 +141,15 @@ exports.Prisma.CardScalarFieldEnum = {
   upvotes: 'upvotes',
   author: 'author',
   altText: 'altText',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CommentScalarFieldEnum = {
+  id: 'id',
+  cardId: 'cardId',
+  text: 'text',
+  author: 'author',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -162,7 +172,8 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   Board: 'Board',
-  Card: 'Card'
+  Card: 'Card',
+  Comment: 'Comment'
 };
 
 /**

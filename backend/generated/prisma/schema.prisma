@@ -22,20 +22,32 @@ model Board {
   author      String?
   altText     String
   cards       Card[]
+  pinned      Boolean  @default(false)
   createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now())
+  pinnedAt    DateTime @default(now())
 }
 
 model Card {
-  id          Int      @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   boardId     Int
-  board       Board    @relation(fields: [boardId], references: [id])
+  board       Board     @relation(fields: [boardId], references: [id])
   title       String
   imageURL    String
   description String
-  upvotes     Int      @default(0)
+  upvotes     Int       @default(0)
   author      String?
   altText     String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now())
+  comments    Comment[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now())
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  cardId    Int
+  card      Card     @relation(fields: [cardId], references: [id])
+  text      String
+  author    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
