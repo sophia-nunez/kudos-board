@@ -11,7 +11,7 @@ const CommentsList = ({ boardId, cardId }) => {
   }, []);
 
   const getComments = async () => {
-    const loadedComments = await fetchComments(2, 3);
+    const loadedComments = await fetchComments(boardId, cardId);
     setComments(loadedComments);
   };
 
@@ -19,7 +19,9 @@ const CommentsList = ({ boardId, cardId }) => {
     <section className="comments-modal">
       <h2>Comments</h2>
       <div className="comments-list">
-        {comments.length &&
+        {!comments || comments.length === 0 ? (
+          <p>No comments to display</p>
+        ) : (
           comments.map((comment) => {
             return (
               <Comment
@@ -28,7 +30,8 @@ const CommentsList = ({ boardId, cardId }) => {
                 author={comment.author}
               />
             );
-          })}
+          })
+        )}
       </div>
 
       <div className="create-comment">
