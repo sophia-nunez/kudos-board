@@ -6,6 +6,7 @@ import { createBoard } from "../utils/boardUtils";
 import { createCard } from "../utils/cardUtils";
 import AddBoard from "./AddBoard";
 import AddCard from "./AddCard";
+import CommentsList from "./CommentsList";
 
 const CreateModal = ({ modalType, reference, setModalOpen, boardId }) => {
   return (
@@ -18,6 +19,7 @@ const CreateModal = ({ modalType, reference, setModalOpen, boardId }) => {
         {modalType === "create-card" && (
           <AddCard boardId={boardId} setModalOpen={setModalOpen} />
         )}
+        {modalType === "comments" && <CommentsList />}
       </section>
     </aside>
   );

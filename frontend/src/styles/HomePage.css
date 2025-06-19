@@ -48,6 +48,7 @@
 }
 
 .board:hover {
+  cursor: pointer;
   animation-name: animatescale;
   animation-duration: 1s;
   transform: scale(1.03);
