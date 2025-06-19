@@ -11,18 +11,22 @@ const CommentsList = ({ comments }) => {
         <Comment />
       </div>
 
-      <form className="create-comment">
+      <div className="create-comment">
         <h4>Add Comment:</h4>
-        <div>
-          <label htmlFor="author">Author (optional):</label>
-          <input type="text" id="author" name="author" required />
-          <label htmlFor="text">Comment:</label>
-          <input type="text" id="text" name="text" required />
-        </div>
-        <button type="submit" id="comment-btn">
-          Post
-        </button>
-      </form>
+        <form id="comment-form">
+          <div className="comment-text">
+            <label htmlFor="text">Comment:</label>
+            <textarea type="text" id="text" name="text" required />
+          </div>
+          <div className="comment-author">
+            <label htmlFor="author">Author (optional):</label>
+            <input type="text" id="author" name="author" required />
+            <button type="submit" id="comment-btn">
+              Post
+            </button>
+          </div>
+        </form>
+      </div>
     </section>
   );
 };
