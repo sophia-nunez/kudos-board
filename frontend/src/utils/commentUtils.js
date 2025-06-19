@@ -18,4 +18,25 @@ const fetchComments = async (boardId, cardId) => {
   }
 };
 
-export { fetchComments };
+const createComment = async (boardId, formInput) => {
+  const cardId = formInput.cardId;
+  try {
+    const response = await fetch(
+      `${dbURL}/${boardId}/cards/${cardId}/comments`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formInput),
+      }
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+  } catch (error) {
+    console.error("Failed to create comment:", error); // get rid of after dev
+  }
+};
+
+export { fetchComments, createComment };

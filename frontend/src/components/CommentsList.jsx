@@ -1,12 +1,17 @@
 import { useState, useEffect } from "react";
 import Comment from "./Comment";
 import "../styles/Comments.css";
-import { fetchComments } from "../utils/commentUtils";
+import { fetchComments, createComment } from "../utils/commentUtils";
 import { fetchCard } from "../utils/cardUtils";
 
-const CommentsList = ({ boardId, cardId }) => {
+const CommentsList = ({ boardId, cardId, setModalOpen }) => {
   const [comments, setComments] = useState(Array());
   const [card, setCard] = useState({});
+  const [formInput, setFormInput] = useState({
+    cardId,
+    text: "",
+    author: "",
+  });
 
   useEffect(() => {
     getComments();
@@ -19,7 +24,29 @@ const CommentsList = ({ boardId, cardId }) => {
     setComments(loadedComments);
   };
 
-  // add Card information (using structure from Card.jsx) to modal:
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    createComment(boardId, formInput);
+
+    setFormInput({
+      cardId,
+      text: "",
+      author: "",
+    });
+
+    setModalOpen(false);
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormInput((prevData) => ({
+      ...prevData, // keep data but replace target value
+      [name]: value,
+    }));
+  };
+
   return (
     <section className="comments-modal">
       <div className="card-info">
@@ -47,14 +74,25 @@ const CommentsList = ({ boardId, cardId }) => {
 
       <div className="create-comment">
         <h4>Add Comment:</h4>
-        <form id="comment-form">
+        <form id="comment-form" onSubmit={handleSubmit}>
           <div className="comment-text">
             <label htmlFor="text">Comment:</label>
-            <textarea type="text" id="text" name="text" required />
+            <textarea
+              type="text"
+              id="text"
+              name="text"
+              required
+              onChange={handleChange}
+            />
           </div>
           <div className="comment-author">
             <label htmlFor="author">Author (optional):</label>
-            <input type="text" id="author" name="author" required />
+            <input
+              type="text"
+              id="author"
+              name="author"
+              onChange={handleChange}
+            />
             <button type="submit" id="comment-btn">
               Post
             </button>

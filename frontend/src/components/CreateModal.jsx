@@ -26,7 +26,11 @@ const CreateModal = ({
           <AddCard boardId={boardId} setModalOpen={setModalOpen} />
         )}
         {modalType === "comments" && (
-          <CommentsList boardId={boardId} cardId={cardId} />
+          <CommentsList
+            boardId={boardId}
+            cardId={cardId}
+            setModalOpen={setModalOpen}
+          />
         )}
       </section>
     </aside>
