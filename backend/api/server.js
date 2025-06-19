@@ -115,7 +115,7 @@ server.get("/boards/:boardId/cards/:cardId", async (req, res, next) => {
 server.post("/boards/:boardId/cards", async (req, res, next) => {
   const newCard = { ...req.body, boardId: Number(req.params.boardId) };
   try {
-    // Validate that board has all the required fields
+    // Validate that card has all the required fields
     const newCardValid =
       newCard.title !== undefined &&
       newCard.imageURL !== undefined &&
@@ -173,6 +173,47 @@ server.delete("/boards/:boardId/cards/:cardId", async (req, res, next) => {
     next(err);
   }
 });
+
+// POST comment
+server.post(
+  "/boards/:boardId/cards/:cardId/comments",
+  async (req, res, next) => {
+    const newComment = { ...req.body, cardId: Number(req.params.cardId) };
+    try {
+      // Validate that comment has all the required fields
+      const newCommentValid = newComment.text !== undefined;
+      if (newCommentValid) {
+        const created = await Card.createComment(newComment);
+        res.status(201).json(created);
+      } else {
+        next({
+          status: 422,
+          message: "text required",
+        });
+      }
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+// GET comments by card
+server.get(
+  "/boards/:boardId/cards/:cardId/comments",
+  async (req, res, next) => {
+    const cardId = Number(req.params.cardId);
+    try {
+      const cards = await Card.findComments(cardId);
+      if (cards) {
+        res.json(cards);
+      } else {
+        next({ status: 404, message: `No cards found` });
+      }
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 
 // [CATCH-ALL]
 server.use((req, res, next) => {
