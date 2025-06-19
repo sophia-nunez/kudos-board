@@ -32,4 +32,14 @@ module.exports = {
     const deleted = await prisma.card.delete({ where: { id } });
     return deleted;
   },
+
+  async findComments(cardId) {
+    const comments = await prisma.comment.findMany({ where: { cardId } });
+    return comments;
+  },
+
+  async createComment(newCard) {
+    const comment = await prisma.comment.create({ data: newCard });
+    return comment;
+  },
 };
