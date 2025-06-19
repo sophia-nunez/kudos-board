@@ -9,10 +9,12 @@ import "../styles/BoardPage.css";
 
 const BoardPage = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalType, setModalType] = useState("");
   const modalRef = useRef(null);
   let data = useLoaderData();
   const [board, setBoard] = useState({});
   const [cards, setCards] = useState(Array());
+  const [comments, setComments] = useState(Array());
   const id = data.id;
 
   useEffect(() => {
@@ -29,7 +31,15 @@ const BoardPage = () => {
   };
 
   const openCreateModal = () => {
+    setModalType("create-card");
     setModalOpen(true);
+  };
+
+  const openCommentModal = () => {
+    setModalType("comments");
+    setModalOpen(true);
+
+    // fetch comments for that card and  set state
   };
 
   // closes modal on window click off of modal or on span
@@ -70,6 +80,7 @@ const BoardPage = () => {
             cards.map((card) => {
               return (
                 <Card
+                  openCommentModal={openCommentModal}
                   key={card.id}
                   id={card.id}
                   boardId={id}
@@ -86,7 +97,7 @@ const BoardPage = () => {
       {modalOpen && (
         <CreateModal
           boardId={id}
-          modalType="create-card"
+          modalType={modalType}
           reference={modalRef}
           setModalOpen={setModalOpen}
         />

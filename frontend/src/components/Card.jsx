@@ -4,7 +4,16 @@ import { useEffect } from "react";
 import { deleteCard, editCard } from "../utils/cardUtils";
 import { useState } from "react";
 
-const Card = ({ id, boardId, title, description, image, altText, upvotes }) => {
+const Card = ({
+  id,
+  boardId,
+  title,
+  description,
+  image,
+  altText,
+  upvotes,
+  openCommentModal,
+}) => {
   const [displayedUpvotes, setDisplayedUpvotes] = useState(parseInt(upvotes));
 
   const upvoteCard = async () => {
@@ -19,7 +28,7 @@ const Card = ({ id, boardId, title, description, image, altText, upvotes }) => {
   };
 
   return (
-    <article className="card" id={`card-${id}`}>
+    <article className="card" id={`card-${id}`} onClick={openCommentModal}>
       <h3>{title}</h3>
       <p>{description}</p>
       <img className="card-image" src={image} alt={altText} />
