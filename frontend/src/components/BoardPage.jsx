@@ -16,6 +16,7 @@ const BoardPage = () => {
   const [cards, setCards] = useState(Array());
   const [comments, setComments] = useState(Array());
   const id = data.id;
+  const [cardId, setCardId] = useState(0);
 
   useEffect(() => {
     loadBoardPage();
@@ -35,8 +36,9 @@ const BoardPage = () => {
     setModalOpen(true);
   };
 
-  const openCommentModal = () => {
+  const openCommentModal = (givenId) => {
     setModalType("comments");
+    setCardId(givenId);
     setModalOpen(true);
 
     // fetch comments for that card and  set state
@@ -97,6 +99,7 @@ const BoardPage = () => {
       {modalOpen && (
         <CreateModal
           boardId={id}
+          cardId={cardId}
           modalType={modalType}
           reference={modalRef}
           setModalOpen={setModalOpen}

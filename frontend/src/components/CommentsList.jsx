@@ -1,14 +1,34 @@
+import { useState, useEffect } from "react";
 import Comment from "./Comment";
 import "../styles/Comments.css";
+import { fetchComments } from "../utils/commentUtils";
 
-const CommentsList = ({ comments }) => {
+const CommentsList = ({ boardId, cardId }) => {
+  const [comments, setComments] = useState(Array());
+
+  useEffect(() => {
+    getComments();
+  }, []);
+
+  const getComments = async () => {
+    const loadedComments = await fetchComments(2, 3);
+    setComments(loadedComments);
+  };
+
   return (
     <section className="comments-modal">
       <h2>Comments</h2>
       <div className="comments-list">
-        <Comment />
-        <Comment />
-        <Comment />
+        {comments.length &&
+          comments.map((comment) => {
+            return (
+              <Comment
+                key={comment.id}
+                text={comment.text}
+                author={comment.author}
+              />
+            );
+          })}
       </div>
 
       <div className="create-comment">
