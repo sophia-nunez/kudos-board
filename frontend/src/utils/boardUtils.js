@@ -1,24 +1,15 @@
 const API_KEY = import.meta.env.VITE_API_KEY;
 const giphyURL = "https://api.giphy.com/v1/gifs/";
-const boardURL = import.meta.env.VITE_DB_URL;
 
-// const fetchBoards = async () => {
-//   // get data here, mock data for now
-//   try {
-//     const response = await fetch(boardURL);
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! status: ${response.status}`);
-//     }
-//     const boards = await response.json();
-//     return boards;
-//   } catch (error) {
-//     console.error("Failed to load kudos boards:", error); // get rid of after dev
-//     return [];
-//   }
-// };
+function boardURL() {
+  return import.meta.env.VITE_DEV
+    ? "http://localhost:3000/boards"
+    : "https://kudos-backend-wi2r.onrender.com/boards";
+}
+
 const fetchBoards = async (query) => {
   try {
-    const response = await fetch(`${boardURL}?${query.toString()}`);
+    const response = await fetch(`${boardURL()}?${query.toString()}`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -31,14 +22,14 @@ const fetchBoards = async (query) => {
 
 const fetchBoardById = async (id) => {
   try {
-    const response = await fetch(`${boardURL}/${id}`);
+    const response = await fetch(`${boardURL()}/${id}`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     let board = await response.json();
 
     // get cards
-    const res = await fetch(`${boardURL}/${id}/cards`);
+    const res = await fetch(`${boardURL()}/${id}/cards`);
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -87,7 +78,7 @@ const searchGifs = async (query) => {
 
 const createBoard = async (formInput) => {
   try {
-    const response = await fetch(boardURL, {
+    const response = await fetch(boardURL(), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -104,7 +95,7 @@ const createBoard = async (formInput) => {
 
 const deleteBoard = async (id) => {
   try {
-    const response = await fetch(`${boardURL}/${id}`, {
+    const response = await fetch(`${boardURL()}/${id}`, {
       method: "DELETE",
     });
     if (!response.ok) {
@@ -118,7 +109,7 @@ const deleteBoard = async (id) => {
 const pinBoard = async (id, isPinned) => {
   try {
     const changes = { pinned: isPinned };
-    const response = await fetch(`${boardURL}/${id}`, {
+    const response = await fetch(`${boardURL()}/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

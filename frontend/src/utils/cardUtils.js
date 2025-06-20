@@ -1,11 +1,15 @@
 const API_KEY = import.meta.env.VITE_API_KEY;
 const giphyURL = "https://api.giphy.com/v1/gifs/";
-const boardURL = import.meta.env.VITE_DB_URL;
 
+function boardURL() {
+  return import.meta.env.VITE_DEV
+    ? "http://localhost:3000/boards"
+    : "https://kudos-backend-wi2r.onrender.com/boards";
+}
 // fetchCards
 const fetchCards = async (boardId) => {
   try {
-    const response = await fetch(`${boardURL}/${boardId}/cards`);
+    const response = await fetch(`${boardURL()}/${boardId}/cards`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -20,7 +24,7 @@ const fetchCards = async (boardId) => {
 // fetchCard
 const fetchCard = async (boardId, cardId) => {
   try {
-    const response = await fetch(`${boardURL}/${boardId}/cards/${cardId}`);
+    const response = await fetch(`${boardURL()}/${boardId}/cards/${cardId}`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -35,7 +39,7 @@ const fetchCard = async (boardId, cardId) => {
 // deleteCard
 const deleteCard = async (boardId, cardId) => {
   try {
-    const response = await fetch(`${boardURL}/${boardId}/cards/${cardId}`, {
+    const response = await fetch(`${boardURL()}/${boardId}/cards/${cardId}`, {
       method: "DELETE",
     });
     if (!response.ok) {
@@ -52,7 +56,7 @@ const deleteCard = async (boardId, cardId) => {
 // editCard
 const editCard = async (boardId, cardId, changes) => {
   try {
-    const response = await fetch(`${boardURL}/${boardId}/cards/${cardId}`, {
+    const response = await fetch(`${boardURL()}/${boardId}/cards/${cardId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -70,7 +74,7 @@ const editCard = async (boardId, cardId, changes) => {
 const createCard = async (formInput) => {
   const boardId = formInput.boardId;
   try {
-    const response = await fetch(`${boardURL}/${boardId}/cards/`, {
+    const response = await fetch(`${boardURL()}/${boardId}/cards/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
