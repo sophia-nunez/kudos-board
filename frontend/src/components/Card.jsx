@@ -24,8 +24,8 @@ const Card = ({
   };
 
   const handleDelete = (e) => {
+    e.stopPropagation();
     deleteCard(boardId, id);
-    console.log("deleted card " + cardId + " from board " + id);
   };
 
   return (

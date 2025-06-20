@@ -1,24 +1,21 @@
 import "../styles/NavBar.css";
 import SearchBar from "./SearchBar";
-import { searchBoards, filterBoards } from "../utils/boardUtils";
-import { useState } from "react";
 import { useEffect } from "react";
 
-const NavBar = ({ loadPage, setBoardList }) => {
-  const [filter, setFilter] = useState("all");
-
+const NavBar = ({
+  filter,
+  setFilter,
+  query,
+  setQuery,
+  loadPage,
+  setBoardChange,
+}) => {
   useEffect(() => {
-    handleFilter();
-  }, [filter]);
-
-  const handleSearch = async (event, query) => {
-    const boards = await searchBoards(query);
-    if (boards === "error") {
-      console.error("failed to load boards");
-    } else {
-      setBoardList(boards);
+    loadPage();
+    if (filter === "all") {
+      setQuery("");
     }
-  };
+  }, [filter]);
 
   const onFilter = async (event) => {
     let selected = event.currentTarget.id;
@@ -28,31 +25,15 @@ const NavBar = ({ loadPage, setBoardList }) => {
     setFilter(selected);
   };
 
-  const handleFilter = async (event) => {
-    if (filter === "all") {
-      loadPage();
-    } else {
-      const boards = await filterBoards(filter);
-
-      if (boards === "error") {
-        console.error("failed to load boards");
-      } else {
-        if (filter === "Recent") {
-          const slicedBoards = boards.slice(0, 6);
-          setBoardList(slicedBoards);
-        } else {
-          setBoardList(boards);
-        }
-      }
-    }
-  };
-
   return (
     <nav>
       <SearchBar
+        setBoardChange={setBoardChange}
+        query={query}
+        setQuery={setQuery}
         searchType="Boards"
         loadPage={loadPage}
-        handleSearch={handleSearch}
+        handleSearch={loadPage}
       />
       <div className="filter-container">
         <button id="all" onClick={onFilter}>
