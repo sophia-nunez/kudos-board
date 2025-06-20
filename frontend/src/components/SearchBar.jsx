@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react";
 import "../styles/SearchBar.css";
 
-const SearchBar = ({ searchType, loadPage, handleSearch }) => {
-  const [query, setQuery] = useState("");
-
+const SearchBar = ({
+  query,
+  setQuery,
+  searchType,
+  loadPage,
+  setBoardChange,
+}) => {
   const updateSearch = async (event) => {
     // TODO: what happens if user inputs smth like "   "
     const currQuery = event.target.value;
@@ -11,14 +14,15 @@ const SearchBar = ({ searchType, loadPage, handleSearch }) => {
   };
 
   const enterSearch = (event) => {
+    e.stopPropagation();
     if (event.key === "Enter") {
-      handleSearch(event, query);
+      loadPage(event);
     }
   };
 
   const clearSearch = () => {
     setQuery("");
-    loadPage();
+    setBoardChange((prev) => !prev);
   };
 
   return (
@@ -33,8 +37,12 @@ const SearchBar = ({ searchType, loadPage, handleSearch }) => {
         onChange={updateSearch}
         onKeyUp={enterSearch}
       />
-      <button onClick={(e) => handleSearch(e, query)}>Search</button>
-      <button onClick={clearSearch}>Clear</button>
+      <button type="button" onClick={(e) => loadPage(e)}>
+        Search
+      </button>
+      <button type="button" onClick={clearSearch}>
+        Clear
+      </button>
     </div>
   );
 };

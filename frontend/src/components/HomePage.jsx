@@ -8,18 +8,34 @@ import { fetchBoards } from "../utils/boardUtils.js";
 
 const HomePage = () => {
   const [boardList, setBoardList] = useState(Array());
+  const [boardChange, setBoardChange] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const modalRef = useRef(null);
 
+  // search and nav
+  const [filter, setFilter] = useState("all");
+  const [query, setQuery] = useState("");
+
   useEffect(() => {
     loadHomePage();
-  }, []);
+  }, [boardChange]);
 
   const loadHomePage = async () => {
-    const boards = await fetchBoards();
-    setBoardList(boards);
-
-    // TODO: if boards is empty, return something to client
+    const currQuery = new URLSearchParams({
+      title: query,
+      description: filter,
+    });
+    const boards = await fetchBoards(currQuery);
+    if (boards === "error") {
+      console.error("failed to load boards");
+    } else {
+      if (filter === "Recent") {
+        const slicedBoards = boards.slice(0, 6);
+        setBoardList(slicedBoards);
+      } else {
+        setBoardList(boards);
+      }
+    }
   };
 
   const openCreateModal = () => {
@@ -47,7 +63,14 @@ const HomePage = () => {
 
   return (
     <>
-      <NavBar loadPage={loadHomePage} setBoardList={setBoardList} />
+      <NavBar
+        setBoardChange={setBoardChange}
+        loadPage={loadHomePage}
+        filter={filter}
+        setFilter={setFilter}
+        query={query}
+        setQuery={setQuery}
+      />
       <main className="board-page">
         <h2> Boards</h2>
         <button onClick={openCreateModal}>Create a New Board</button>
@@ -57,12 +80,14 @@ const HomePage = () => {
             boardList.map((board) => {
               return (
                 <Board
+                  setBoardChange={setBoardChange}
                   key={board.id}
                   id={board.id}
                   title={board.title}
                   description={board.description}
                   image={board.imageURL}
                   altText={board.altText}
+                  pinned={board.pinned}
                   cards={board.cards}
                 />
               );

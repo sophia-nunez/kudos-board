@@ -20,7 +20,7 @@ const BoardPage = () => {
 
   useEffect(() => {
     loadBoardPage();
-  }, []);
+  }, [cards]);
 
   const loadBoardPage = async () => {
     const board = await fetchBoardById(id);

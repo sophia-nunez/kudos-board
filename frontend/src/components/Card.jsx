@@ -17,15 +17,16 @@ const Card = ({
 }) => {
   const [displayedUpvotes, setDisplayedUpvotes] = useState(parseInt(upvotes));
 
-  const upvoteCard = async () => {
+  const upvoteCard = async (e) => {
+    e.stopPropagation();
     const newVotes = displayedUpvotes + 1;
     setDisplayedUpvotes(newVotes);
     await editCard(boardId, id, { upvotes: newVotes });
   };
 
   const handleDelete = (e) => {
+    e.stopPropagation();
     deleteCard(boardId, id);
-    console.log("deleted card " + cardId + " from board " + id);
   };
 
   return (

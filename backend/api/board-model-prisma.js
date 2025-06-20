@@ -7,7 +7,7 @@ module.exports = {
   //boards
   async find(search) {
     const where = {};
-    let orderBy = {};
+    let orderBy = [{ pinned: "desc" }, { pinnedAt: "desc" }];
 
     if (search.title) {
       where.title = {
@@ -17,8 +17,9 @@ module.exports = {
     }
 
     if (search.description) {
-      if (search.description === "Recent") {
-        orderBy = { createdAt: "desc" };
+      if (search.description === "all") {
+      } else if (search.description === "Recent") {
+        orderBy[0] = { createdAt: "desc" };
       } else {
         where.description = {
           contains: search.description,
@@ -43,5 +44,13 @@ module.exports = {
   async delete(id) {
     const deleted = await prisma.board.delete({ where: { id } });
     return deleted;
+  },
+
+  async update(id, changes) {
+    const updated = await prisma.board.update({
+      data: changes,
+      where: { id: id },
+    });
+    return updated;
   },
 };

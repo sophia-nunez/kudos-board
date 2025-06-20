@@ -63,6 +63,34 @@ server.post("/boards", async (req, res, next) => {
   }
 });
 
+// [PUT] edit board (pin)
+server.put("/boards/:boardId", async (req, res, next) => {
+  const boardId = Number(req.params.boardId);
+  let changes = req.body;
+  try {
+    // Make sure the ID is valid
+    const board = await Board.findById(boardId);
+    // change should be upvotes
+    const changesValid = changes.pinned !== undefined;
+
+    if (changes.pinned) {
+      // if pinning, set pinnedAt to now
+      changes = { ...changes, pinnedAt: new Date() };
+    } else {
+      // otherwise set to createdAt
+      changes = { ...changes, pinnedAt: board.createdAt };
+    }
+    if (board && changesValid) {
+      const updated = await Board.update(boardId, changes);
+      res.json(updated);
+    } else {
+      next({ status: 422, message: "Invalid ID or invalid changes" });
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
 // [DELETE] /boards/:id
 server.delete("/boards/:id", async (req, res, next) => {
   const id = Number(req.params.id);

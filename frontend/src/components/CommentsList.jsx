@@ -25,6 +25,7 @@ const CommentsList = ({ boardId, cardId, setModalOpen }) => {
   };
 
   const handleSubmit = (e) => {
+    e.stopPropagation();
     e.preventDefault();
 
     createComment(boardId, formInput);
@@ -35,7 +36,7 @@ const CommentsList = ({ boardId, cardId, setModalOpen }) => {
       author: "",
     });
 
-    setModalOpen(false);
+    getComments();
   };
 
   const handleChange = (event) => {
@@ -82,6 +83,7 @@ const CommentsList = ({ boardId, cardId, setModalOpen }) => {
               id="text"
               name="text"
               required
+              value={formInput.text}
               onChange={handleChange}
             />
           </div>
@@ -91,6 +93,7 @@ const CommentsList = ({ boardId, cardId, setModalOpen }) => {
               type="text"
               id="author"
               name="author"
+              value={formInput.author}
               onChange={handleChange}
             />
             <button type="submit" id="comment-btn">

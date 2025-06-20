@@ -2,18 +2,30 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 const giphyURL = "https://api.giphy.com/v1/gifs/";
 const boardURL = import.meta.env.VITE_DB_URL;
 
-const fetchBoards = async () => {
-  // get data here, mock data for now
+// const fetchBoards = async () => {
+//   // get data here, mock data for now
+//   try {
+//     const response = await fetch(boardURL);
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! status: ${response.status}`);
+//     }
+//     const boards = await response.json();
+//     return boards;
+//   } catch (error) {
+//     console.error("Failed to load kudos boards:", error); // get rid of after dev
+//     return [];
+//   }
+// };
+const fetchBoards = async (query) => {
   try {
-    const response = await fetch(boardURL);
+    const response = await fetch(`${boardURL}?${query.toString()}`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const boards = await response.json();
     return boards;
   } catch (error) {
-    console.error("Failed to load kudos boards:", error); // get rid of after dev
-    return [];
+    return "error";
   }
 };
 
@@ -103,41 +115,32 @@ const deleteBoard = async (id) => {
   }
 };
 
-const searchBoards = async (query) => {
+const pinBoard = async (id, isPinned) => {
   try {
-    const params = new URLSearchParams({ title: query });
-    const response = await fetch(`${boardURL}?${params.toString()}`);
+    const changes = { pinned: isPinned };
+    const response = await fetch(`${boardURL}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(changes),
+    });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const boards = await response.json();
-    return boards;
-  } catch (error) {
-    return "error";
-  }
-};
-
-const filterBoards = async (filter) => {
-  try {
-    const params = new URLSearchParams({ description: filter });
-    const response = await fetch(`${boardURL}?${params.toString()}`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const boards = await response.json();
-    return boards;
+    const board = await response.json();
+    return board;
   } catch (error) {
     return "error";
   }
 };
 
 export {
-  fetchBoards,
   fetchBoardById,
   fetchGifs,
   searchGifs,
   createBoard,
   deleteBoard,
-  searchBoards,
-  filterBoards,
+  fetchBoards,
+  pinBoard,
 };
