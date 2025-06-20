@@ -28,8 +28,7 @@ const Board = ({
         const result = await deleteBoard(deleteId);
         setBoardChange((prev) => !prev);
         if (result === "error") {
-          console.log("error occured");
-          // handle error here
+          alert("Failed to Delete Board.");
         }
       }
 
@@ -40,8 +39,7 @@ const Board = ({
   const handleDelete = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    const selectedId = event.target.dataset.id;
-    setDeleteId(selectedId);
+    setDeleteId(id);
   };
 
   useEffect(() => {
@@ -49,12 +47,10 @@ const Board = ({
       isPinnedFirstRender.current = false;
     } else {
       async function updateBoard() {
-        console.log("pinboard fault");
         const updated = await pinBoard(id, isPinned);
         setBoardChange((prev) => !prev);
         if (updated === "error") {
-          console.log("error occured");
-          // handle error here
+          alert("Failed to pin board.");
         }
       }
 
@@ -67,7 +63,6 @@ const Board = ({
     event.stopPropagation();
     setIsPinned((prevIsPinned) => !prevIsPinned);
   };
-  // TODO: check propagation on ALL delete buttons
 
   return (
     <Link to={`/board/${id}`} className="board-link">
