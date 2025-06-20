@@ -96,6 +96,7 @@ const HomePage = () => {
       </main>
       {modalOpen && (
         <CreateModal
+          setBoardChange={setBoardChange}
           modalType="create-board"
           reference={modalRef}
           setModalOpen={setModalOpen}

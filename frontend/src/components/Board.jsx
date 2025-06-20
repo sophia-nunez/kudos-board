@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { deleteBoard, pinBoard } from "../utils/boardUtils";
 import { TiPinOutline, TiPin } from "react-icons/ti";
 import "../styles/main.css";
 import { useRef } from "react";
-import { useEffect } from "react";
 
 const Board = ({
   id,
@@ -17,25 +16,46 @@ const Board = ({
 }) => {
   const isFirstRender = useRef(true); // avoid effect on first render
   const [isPinned, setIsPinned] = useState(pinned);
+  const [deleteId, setDeleteId] = useState(0);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+    } else {
+      async function updateBoard() {
+        const result = await deleteBoard(deleteId);
+        setBoardChange((prev) => !prev);
+        if (result === "error") {
+          console.log("error occured");
+          // handle error here
+        }
+      }
+
+      updateBoard();
+    }
+  }, [deleteId]);
 
   const handleDelete = (event) => {
+    event.preventDefault();
     event.stopPropagation();
-    const id = event.target.dataset.id;
-    const result = deleteBoard(id);
-    setBoardChange((prev) => !prev);
+    const selectedId = event.target.dataset.id;
+    setDeleteId(selectedId);
   };
 
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
     } else {
-      const updated = pinBoard(id, isPinned);
-      if (updated !== "error") {
+      async function updateBoard() {
+        const updated = await pinBoard(id, isPinned);
         setBoardChange((prev) => !prev);
-      } else {
-        console.log("error occured");
-        // TODO: add error handling for client, setIsError which renders message
+        if (updated === "error") {
+          console.log("error occured");
+          // handle error here
+        }
       }
+
+      updateBoard();
     }
   }, [isPinned]);
 
@@ -43,7 +63,6 @@ const Board = ({
     event.preventDefault();
     event.stopPropagation();
     setIsPinned((prevIsPinned) => !prevIsPinned);
-    setBoardChange((prev) => !prev);
   };
   // TODO: check propagation on ALL delete buttons
 

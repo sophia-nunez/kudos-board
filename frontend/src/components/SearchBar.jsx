@@ -14,7 +14,7 @@ const SearchBar = ({
   };
 
   const enterSearch = (event) => {
-    e.stopPropagation();
+    event.stopPropagation();
     if (event.key === "Enter") {
       loadPage(event);
     }

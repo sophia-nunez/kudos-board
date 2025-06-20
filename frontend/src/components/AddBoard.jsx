@@ -3,7 +3,7 @@ import "../styles/Modal.css";
 import GifSelect from "./GifSelect";
 import { createBoard } from "../utils/boardUtils";
 
-const AddBoard = ({ setModalOpen }) => {
+const AddBoard = ({ setModalOpen, setBoardChange }) => {
   const [selectedGif, setSelectedGif] = useState(
     "https://giphy.com/embed/tFSqMSMnzPRTAdvKyr"
   );
@@ -22,10 +22,10 @@ const AddBoard = ({ setModalOpen }) => {
     }));
   }, [selectedGif]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    createBoard(formInput);
+    await createBoard(formInput);
 
     setFormInput({
       title: "",
@@ -35,6 +35,7 @@ const AddBoard = ({ setModalOpen }) => {
       altText: "",
     });
 
+    setBoardChange((prev) => !prev);
     setModalOpen(false);
   };
 
