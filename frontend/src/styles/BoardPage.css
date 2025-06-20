@@ -18,6 +18,7 @@
   flex-wrap: wrap;
   gap: 30px;
   align-items: stretch;
+  margin-top: 5vh;
 }
 
 @media (min-width: 1200px) {
@@ -26,7 +27,6 @@
   }
   .card {
     width: 300px;
-    height: 400px;
 
     img {
       width: 300px;

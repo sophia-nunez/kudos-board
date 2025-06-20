@@ -4,7 +4,7 @@ import "../styles/Comments.css";
 import { fetchComments, createComment } from "../utils/commentUtils";
 import { fetchCard } from "../utils/cardUtils";
 
-const CommentsList = ({ boardId, cardId, setModalOpen }) => {
+const CommentsList = ({ boardId, cardId }) => {
   const [comments, setComments] = useState(Array());
   const [card, setCard] = useState({});
   const [formInput, setFormInput] = useState({

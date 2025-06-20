@@ -3,7 +3,7 @@ import "../styles/Modal.css";
 import GifSelect from "./GifSelect";
 import { createCard } from "../utils/cardUtils";
 
-const AddCard = ({ setModalOpen, boardId }) => {
+const AddCard = ({ setModalOpen, boardId, setBoardChange }) => {
   const [selectedGif, setSelectedGif] = useState(
     "https://giphy.com/embed/tFSqMSMnzPRTAdvKyr"
   );
@@ -36,6 +36,7 @@ const AddCard = ({ setModalOpen, boardId }) => {
       altText: "",
     });
 
+    setBoardChange((prev) => !prev);
     setModalOpen(false);
   };
 
