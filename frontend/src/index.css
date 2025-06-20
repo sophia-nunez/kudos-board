@@ -43,14 +43,15 @@ body {
 #toggle-mode {
   position: absolute;
   top: 0;
-  background-color: var(--secondary-color);
+  background-color: var(--hover-color);
   border-radius: 50px;
   margin: 20px;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 #toggle-mode:hover {
-  background-color: var(--hover-color);
+  background-color: var(--secondary-color);
+  color: var(--background-color);
   cursor: pointer;
 }
 
