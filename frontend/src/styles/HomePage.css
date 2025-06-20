@@ -4,10 +4,11 @@
   flex-wrap: wrap;
   justify-content: start;
   align-items: stretch;
-
+  overflow: scroll;
   width: 85%;
   gap: 30px;
-  margin-top: 5vh;
+  padding: 20px;
+  margin: 5vh 0px;
 }
 
 .board-link {

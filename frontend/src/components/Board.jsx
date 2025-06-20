@@ -83,7 +83,7 @@ const Board = ({
         <h3>{title}</h3>
         <img className="board-image" src={image} alt={altText} />
         <p>{description}</p>
-        {author && <p>Created By: {author}</p>}
+        {author ? <p>Created By: {author}</p> : <p />}
         <div className="edit-buttons">
           <button>View Board</button>
           <button className="delete-btn" data-id={id} onClick={handleDelete}>

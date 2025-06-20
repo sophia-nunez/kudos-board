@@ -41,7 +41,6 @@ body {
 #toggle-mode {
   position: absolute;
   top: 0;
-  font-size: x-large;
   background-color: var(--secondary-color);
   border-radius: 50px;
   margin: 20px;

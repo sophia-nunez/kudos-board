@@ -5,5 +5,5 @@ main {
   gap: 20px;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: calc(100vh - 5vh - 90px);
 }

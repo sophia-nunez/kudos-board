@@ -43,7 +43,7 @@ const AppContent = () => {
   return (
     <div data-theme={theme}>
       <button id="toggle-mode" onClick={toggleTheme}>
-        {theme === "light" ? "☀️" : "🌖"}
+        {theme === "light" ? "☀️ Light" : "🌖 Dark"}
       </button>
       {<RouterProvider router={router} />}
     </div>
