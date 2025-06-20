@@ -10,13 +10,18 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  width: 85%;
   gap: 0.5rem;
 }
 
 .filter-container {
   button {
+    max-width: 20%;
+    overflow: hidden;
+    overflow-wrap: break-word;
     background-color: var(--background-color);
     border: 1px solid var(--secondary-color);
+    font-size: 10px;
   }
 
   button:hover {
@@ -27,5 +32,13 @@ nav {
   .selected {
     background-color: var(--primary-color);
     border: 1px solid transparent;
+  }
+}
+
+@media (min-width: 526px) {
+  .filter-container {
+    button {
+      font-size: 13px;
+    }
   }
 }
