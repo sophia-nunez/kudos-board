@@ -23,14 +23,14 @@ const CreateModal = ({
           />
         )}
         {modalType === "create-card" && (
-          <AddCard boardId={boardId} setModalOpen={setModalOpen} />
-        )}
-        {modalType === "comments" && (
-          <CommentsList
+          <AddCard
+            setBoardChange={setBoardChange}
             boardId={boardId}
-            cardId={cardId}
             setModalOpen={setModalOpen}
           />
+        )}
+        {modalType === "comments" && (
+          <CommentsList boardId={boardId} cardId={cardId} />
         )}
       </section>
     </aside>

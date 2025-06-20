@@ -1,10 +1,11 @@
-import '../styles/Footer.css'
+import "../styles/Footer.css";
 
 const Footer = () => {
-
   return (
-    <footer>Footer</footer>
-  )
-}
+    <footer>
+      <p>Kudoboard @ 2025</p>
+    </footer>
+  );
+};
 
 export default Footer;

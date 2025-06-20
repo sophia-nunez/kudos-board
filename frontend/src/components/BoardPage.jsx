@@ -2,28 +2,32 @@ import { useState, useEffect, useRef } from "react";
 import { NavLink, useLoaderData } from "react-router";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { fetchBoardById } from "../utils/boardUtils.js";
+import { FaSpinner } from "react-icons/fa6";
 import Card from "./Card";
 import CreateModal from "./CreateModal";
 import "../styles/main.css";
 import "../styles/BoardPage.css";
 
 const BoardPage = () => {
+  let data = useLoaderData();
+  const [isLoading, setIsLoading] = useState(true);
+  const [cardsChange, setCardsChange] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState("");
   const modalRef = useRef(null);
-  let data = useLoaderData();
   const [board, setBoard] = useState({});
   const [cards, setCards] = useState(Array());
-  const [comments, setComments] = useState(Array());
   const id = data.id;
   const [cardId, setCardId] = useState(0);
 
   useEffect(() => {
     loadBoardPage();
-  }, [cards]);
+  }, [cardsChange]);
 
   const loadBoardPage = async () => {
+    setIsLoading(true);
     const board = await fetchBoardById(id);
+    setIsLoading(false);
 
     setBoard(board);
     setCards(board.cards);
@@ -77,11 +81,14 @@ const BoardPage = () => {
         <button onClick={openCreateModal}>Create a New Card</button>
 
         <section className="card-list">
-          {cards.length === 0 && (
+          {!isLoading && (!cards || (cards && cards.length === 0)) && (
             <p>
               <br />
               No cards to display.
             </p>
+          )}
+          {isLoading && cards && cards.length === 0 && (
+            <FaSpinner className="loading" />
           )}
           {cards &&
             cards.length > 0 &&
@@ -105,6 +112,7 @@ const BoardPage = () => {
       </main>
       {modalOpen && (
         <CreateModal
+          setBoardChange={setCardsChange}
           boardId={id}
           cardId={cardId}
           modalType={modalType}

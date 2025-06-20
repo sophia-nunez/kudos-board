@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --env-file=.env --watch index.js",
     "start": "node index.js",
-    "build": "npm install",
+    "build": "npm install && prisma generate && prisam migrate reset --force && prisma migrate deploy",
     "db:migrate": "prisma migrate dev",
     "db:reset": "prisma migrate reset --force",
     "db:seed": "node prisma/seed.js",

@@ -3,10 +3,11 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: start;
+  align-items: stretch;
 
   width: 85%;
   gap: 30px;
-  align-items: stretch;
+  margin-top: 5vh;
 }
 
 .board-link {
@@ -25,7 +26,7 @@
   flex-wrap: wrap;
   gap: 0.2rem;
   width: 200px;
-  height: 300px;
+  height: 100%;
   padding: 0.3em;
   border-radius: 10px;
   position: relative;
@@ -43,7 +44,7 @@
   .board-image {
     width: 200px;
     height: auto;
-    margin-bottom: auto;
+    margin: auto;
   }
 
   .pin-btn {
@@ -90,6 +91,22 @@
   box-shadow: 0px 0px 8px 2px rgba(183, 159, 255, 0.678);
 }
 
+.loading {
+  animation: spin 2s linear infinite;
+  font-size: 300px;
+  color: var(--primary-color);
+  margin: auto;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes animateshrink {
   from {
     transform: scale(1.03);
@@ -112,5 +129,18 @@
 @media (max-width: 528px) {
   .board-list {
     justify-content: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .board-list {
+    gap: 50px;
+  }
+  .board {
+    width: 300px;
+
+    .board-image {
+      width: 300px;
+    }
   }
 }

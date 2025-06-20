@@ -5,10 +5,12 @@ import "../styles/main.css";
 import "../styles/HomePage.css";
 import { useState, useEffect, useRef } from "react";
 import { fetchBoards } from "../utils/boardUtils.js";
+import { FaSpinner } from "react-icons/fa6";
 
 const HomePage = () => {
   const [boardList, setBoardList] = useState(Array());
   const [boardChange, setBoardChange] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const modalRef = useRef(null);
 
@@ -21,6 +23,7 @@ const HomePage = () => {
   }, [boardChange]);
 
   const loadHomePage = async () => {
+    setIsLoading(true);
     const currQuery = new URLSearchParams({
       title: query,
       description: filter,
@@ -36,6 +39,7 @@ const HomePage = () => {
         setBoardList(boards);
       }
     }
+    setIsLoading(false);
   };
 
   const openCreateModal = () => {
@@ -75,7 +79,10 @@ const HomePage = () => {
         <h2> Boards</h2>
         <button onClick={openCreateModal}>Create a New Board</button>
         <section className="board-list">
-          {boardList.length === 0 && <p>No boards to display.</p>}
+          {isLoading && (!boardList || boardList.length === 0) && (
+            <FaSpinner className="loading" />
+          )}
+          {!isLoading && boardList.length === 0 && <p>No boards to display.</p>}
           {boardList &&
             boardList.map((board) => {
               return (
