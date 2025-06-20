@@ -43,6 +43,7 @@ const Board = ({
     event.preventDefault();
     event.stopPropagation();
     setIsPinned((prevIsPinned) => !prevIsPinned);
+    setBoardChange((prev) => !prev);
   };
   // TODO: check propagation on ALL delete buttons
 

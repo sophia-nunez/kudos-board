@@ -12,9 +12,6 @@ const NavBar = ({
 }) => {
   useEffect(() => {
     loadPage();
-    // if (filter === "all") {
-    //   setQuery("");
-    // }
   }, [filter]);
 
   const onFilter = async (event) => {

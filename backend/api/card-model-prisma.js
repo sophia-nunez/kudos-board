@@ -6,7 +6,9 @@ const prisma = new PrismaClient();
 module.exports = {
   // cards
   async findByBoard(boardId) {
-    const cards = await prisma.card.findMany({ where: { boardId } });
+    const orderBy = [{ upvotes: "desc" }, { createdAt: "desc" }];
+
+    const cards = await prisma.card.findMany({ where: { boardId }, orderBy });
     return cards;
   },
 
@@ -34,7 +36,12 @@ module.exports = {
   },
 
   async findComments(cardId) {
-    const comments = await prisma.comment.findMany({ where: { cardId } });
+    const orderBy = [{ createdAt: "desc" }];
+
+    const comments = await prisma.comment.findMany({
+      where: { cardId },
+      orderBy,
+    });
     return comments;
   },
 
