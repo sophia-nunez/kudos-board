@@ -71,12 +71,18 @@ const BoardPage = () => {
             <IoArrowBackCircleSharp />
           </NavLink>
           <h2>{board.title}</h2>
-          <p></p>
+          <div className="back-btn" />
         </div>
         <p>{board.description}</p>
         <button onClick={openCreateModal}>Create a New Card</button>
 
         <section className="card-list">
+          {cards.length === 0 && (
+            <p>
+              <br />
+              No cards to display.
+            </p>
+          )}
           {cards &&
             cards.length > 0 &&
             cards.map((card) => {
