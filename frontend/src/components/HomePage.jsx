@@ -11,6 +11,7 @@ const HomePage = () => {
   const [boardList, setBoardList] = useState(Array());
   const [boardChange, setBoardChange] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingError, setLoadingError] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const modalRef = useRef(null);
 
@@ -20,6 +21,7 @@ const HomePage = () => {
 
   useEffect(() => {
     loadHomePage();
+    console.log("home page fault");
   }, [boardChange]);
 
   const loadHomePage = async () => {
@@ -30,7 +32,8 @@ const HomePage = () => {
     });
     const boards = await fetchBoards(currQuery);
     if (boards === "error") {
-      console.error("failed to load boards");
+      console.error("Failed to load boards");
+      setLoadingError(true);
     } else {
       if (filter === "Recent") {
         const slicedBoards = boards.slice(0, 6);
@@ -82,6 +85,7 @@ const HomePage = () => {
           {isLoading && (!boardList || boardList.length === 0) && (
             <FaSpinner className="loading" />
           )}
+          {loadingError && <p>Error loading boards, please try again.</p>}
           {!isLoading && boardList.length === 0 && <p>No boards to display.</p>}
           {boardList &&
             boardList.map((board) => {

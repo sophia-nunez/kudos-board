@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { fetchGifs, searchGifs } from "../utils/boardUtils";
 import SearchBar from "./SearchBar";
 
 import "../styles/GifSelect.css";
 
 const GifSelect = ({ modalOpen, setSelectedGif }) => {
+  const isFirstRender = useRef(true); // avoid effect on first render
   const [boardChange, setBoardChange] = useState(false);
   const [gifs, setGifs] = useState(Array());
   const [selectedId, setSelectedId] = useState("");
@@ -16,7 +17,11 @@ const GifSelect = ({ modalOpen, setSelectedGif }) => {
   }, [modalOpen]); // make dependent on open/close
 
   useEffect(() => {
-    loadDefaultGifs();
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+    } else {
+      loadDefaultGifs();
+    }
   }, [boardChange]); // test this, should allow clear to work
 
   const loadDefaultGifs = async () => {

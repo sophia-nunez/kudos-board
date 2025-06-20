@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router";
 import { deleteBoard, pinBoard } from "../utils/boardUtils";
 import { TiPinOutline, TiPin } from "react-icons/ti";
 import "../styles/main.css";
-import { useRef } from "react";
 
 const Board = ({
   id,
@@ -15,6 +14,7 @@ const Board = ({
   setBoardChange,
 }) => {
   const isFirstRender = useRef(true); // avoid effect on first render
+  const isPinnedFirstRender = useRef(true); // avoid effect on first render
   const [isPinned, setIsPinned] = useState(pinned);
   const [deleteId, setDeleteId] = useState(0);
 
@@ -43,10 +43,11 @@ const Board = ({
   };
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
+    if (isPinnedFirstRender.current) {
+      isPinnedFirstRender.current = false;
     } else {
       async function updateBoard() {
+        console.log("pinboard fault");
         const updated = await pinBoard(id, isPinned);
         setBoardChange((prev) => !prev);
         if (updated === "error") {

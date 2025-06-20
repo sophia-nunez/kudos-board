@@ -1,6 +1,6 @@
 import "../styles/NavBar.css";
 import SearchBar from "./SearchBar";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const NavBar = ({
   filter,
@@ -10,8 +10,14 @@ const NavBar = ({
   loadPage,
   setBoardChange,
 }) => {
+  const isFirstRender = useRef(true); // avoid effect on first render
+
   useEffect(() => {
-    loadPage();
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+    } else {
+      loadPage();
+    }
   }, [filter]);
 
   const onFilter = async (event) => {

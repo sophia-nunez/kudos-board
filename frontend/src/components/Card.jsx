@@ -1,6 +1,5 @@
 import "../styles/main.css";
 import "../styles/Card.css";
-import { useEffect } from "react";
 import { deleteCard, editCard } from "../utils/cardUtils";
 import { useState } from "react";
 
