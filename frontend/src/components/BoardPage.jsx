@@ -95,6 +95,7 @@ const BoardPage = () => {
             cards.map((card) => {
               return (
                 <Card
+                  setCardsChange={setCardsChange}
                   openCommentModal={openCommentModal}
                   key={card.id}
                   id={card.id}

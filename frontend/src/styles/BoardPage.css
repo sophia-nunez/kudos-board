@@ -21,6 +21,15 @@
   margin-top: 5vh;
 }
 
+.delete-btn {
+  background-color: var(--delete-red);
+}
+
+.delete-btn:hover {
+  background-color: rgb(139, 55, 49);
+  color: white;
+}
+
 @media (min-width: 1200px) {
   .card-list {
     gap: 50px;

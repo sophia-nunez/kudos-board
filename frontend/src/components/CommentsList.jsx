@@ -6,6 +6,7 @@ import { fetchCard } from "../utils/cardUtils";
 
 const CommentsList = ({ boardId, cardId }) => {
   const [comments, setComments] = useState(Array());
+  const [pageChange, setPageChange] = useState(false);
   const [card, setCard] = useState({});
   const [formInput, setFormInput] = useState({
     cardId,
@@ -15,7 +16,7 @@ const CommentsList = ({ boardId, cardId }) => {
 
   useEffect(() => {
     getComments();
-  }, []);
+  }, [pageChange]);
 
   const getComments = async () => {
     const loadedCard = await fetchCard(boardId, cardId);
@@ -24,11 +25,11 @@ const CommentsList = ({ boardId, cardId }) => {
     setComments(loadedComments);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.stopPropagation();
     e.preventDefault();
 
-    createComment(boardId, formInput);
+    await createComment(boardId, formInput);
 
     setFormInput({
       cardId,
@@ -37,6 +38,7 @@ const CommentsList = ({ boardId, cardId }) => {
     });
 
     getComments();
+    setPageChange((prev) => !prev);
   };
 
   const handleChange = (event) => {

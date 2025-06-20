@@ -8,6 +8,7 @@
   --hover-color: #787093;
   --background-color: rgb(65, 59, 71);
   --text-color: #ffffff;
+  --delete-red: rgb(122, 40, 34);
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
@@ -22,6 +23,7 @@
   --primary-color: #b9a7f2;
   --secondary-color: #1b1238;
   --hover-color: #e8e2ff;
+  --delete-red: rgb(221, 132, 132);
   background-color: var(--background-color);
   color: var(--text-color);
 

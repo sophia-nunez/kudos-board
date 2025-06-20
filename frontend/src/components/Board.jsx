@@ -83,7 +83,7 @@ const Board = ({
         <p>{description}</p>
         <div className="edit-buttons">
           <button>View Board</button>
-          <button data-id={id} onClick={handleDelete}>
+          <button className="delete-btn" data-id={id} onClick={handleDelete}>
             Delete Board
           </button>
         </div>

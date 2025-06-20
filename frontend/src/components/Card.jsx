@@ -14,6 +14,7 @@ const Card = ({
   author,
   upvotes,
   openCommentModal,
+  setCardsChange,
 }) => {
   const [displayedUpvotes, setDisplayedUpvotes] = useState(parseInt(upvotes));
 
@@ -22,11 +23,13 @@ const Card = ({
     const newVotes = displayedUpvotes + 1;
     setDisplayedUpvotes(newVotes);
     await editCard(boardId, id, { upvotes: newVotes });
+    setCardsChange((prev) => !prev);
   };
 
-  const handleDelete = (e) => {
+  const handleDelete = async (e) => {
     e.stopPropagation();
-    deleteCard(boardId, id);
+    await deleteCard(boardId, id);
+    setCardsChange((prev) => !prev);
   };
 
   return (
@@ -41,7 +44,9 @@ const Card = ({
       {author && <p>{author}</p>}
       <div className="edit-buttons">
         <button onClick={upvoteCard}>Upvote: {displayedUpvotes}</button>
-        <button onClick={handleDelete}>Delete</button>
+        <button className="delete-btn" onClick={handleDelete}>
+          Delete
+        </button>
       </div>
     </article>
   );
