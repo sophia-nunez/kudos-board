@@ -1,11 +1,11 @@
 const API_KEY = import.meta.env.VITE_API_KEY;
 const giphyURL = "https://api.giphy.com/v1/gifs/";
-const dbURL = import.meta.env.VITE_DB_URL;
+import { boardURL } from "./boardUtils";
 
 const fetchComments = async (boardId, cardId) => {
   try {
     const response = await fetch(
-      `${dbURL}/${boardId}/cards/${cardId}/comments`
+      `${boardURL()}/${boardId}/cards/${cardId}/comments`
     );
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -22,7 +22,7 @@ const createComment = async (boardId, formInput) => {
   const cardId = formInput.cardId;
   try {
     const response = await fetch(
-      `${dbURL}/${boardId}/cards/${cardId}/comments`,
+      `${boardURL()}/${boardId}/cards/${cardId}/comments`,
       {
         method: "POST",
         headers: {

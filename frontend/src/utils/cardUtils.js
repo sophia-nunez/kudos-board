@@ -1,11 +1,7 @@
 const API_KEY = import.meta.env.VITE_API_KEY;
 const giphyURL = "https://api.giphy.com/v1/gifs/";
+import { boardURL } from "./boardUtils";
 
-function boardURL() {
-  return import.meta.env.VITE_DEV
-    ? "http://localhost:3000/boards"
-    : "https://kudos-backend-wi2r.onrender.com/boards";
-}
 // fetchCards
 const fetchCards = async (boardId) => {
   try {

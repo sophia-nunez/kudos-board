@@ -127,6 +127,7 @@ const pinBoard = async (id, isPinned) => {
 };
 
 export {
+  boardURL,
   fetchBoardById,
   fetchGifs,
   searchGifs,
