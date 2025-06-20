@@ -17,7 +17,8 @@ const Card = ({
 }) => {
   const [displayedUpvotes, setDisplayedUpvotes] = useState(parseInt(upvotes));
 
-  const upvoteCard = async () => {
+  const upvoteCard = async (e) => {
+    e.stopPropagation();
     const newVotes = displayedUpvotes + 1;
     setDisplayedUpvotes(newVotes);
     await editCard(boardId, id, { upvotes: newVotes });

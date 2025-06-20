@@ -19,7 +19,7 @@ module.exports = {
     if (search.description) {
       if (search.description === "all") {
       } else if (search.description === "Recent") {
-        orderBy[1] = { createdAt: "desc" };
+        orderBy[0] = { createdAt: "desc" };
       } else {
         where.description = {
           contains: search.description,
