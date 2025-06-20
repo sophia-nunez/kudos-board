@@ -43,7 +43,7 @@
   .board-image {
     width: 200px;
     height: auto;
-    margin-bottom: auto;
+    margin: auto;
   }
 
   .pin-btn {
@@ -112,5 +112,19 @@
 @media (max-width: 528px) {
   .board-list {
     justify-content: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .board-list {
+    gap: 50px;
+  }
+  .board {
+    width: 300px;
+    height: 400px;
+
+    .board-image {
+      width: 300px;
+    }
   }
 }
