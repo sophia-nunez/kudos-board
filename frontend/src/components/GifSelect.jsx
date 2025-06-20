@@ -5,16 +5,27 @@ import SearchBar from "./SearchBar";
 import "../styles/GifSelect.css";
 
 const GifSelect = ({ modalOpen, setSelectedGif }) => {
+  const [boardChange, setBoardChange] = useState(false);
   const [gifs, setGifs] = useState(Array());
   const [selectedId, setSelectedId] = useState("");
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
+    setQuery("");
     loadDefaultGifs();
   }, [modalOpen]); // make dependent on open/close
 
+  useEffect(() => {
+    loadDefaultGifs();
+  }, [boardChange]); // test this, should allow clear to work
+
   const loadDefaultGifs = async () => {
-    const gifData = await fetchGifs();
-    setGifs(gifData);
+    if (query == "") {
+      const gifData = await fetchGifs();
+      setGifs(gifData);
+    } else {
+      handleSearch();
+    }
   };
 
   const selectGif = (event, gifURL, gifId) => {
@@ -28,19 +39,19 @@ const GifSelect = ({ modalOpen, setSelectedGif }) => {
     }
   };
 
-  const handleSearch = async (event, query) => {
+  const handleSearch = async () => {
     const gifData = await searchGifs(query);
     setGifs(gifData);
-
-    console.log(gifData);
   };
 
   return (
     <section className="gifs">
       <SearchBar
+        setBoardChange={setBoardChange}
+        query={query}
+        setQuery={setQuery}
         className="search-bar"
         searchType="GIFs"
-        handleSearch={handleSearch}
         loadPage={loadDefaultGifs}
       />
       <article className="gif-select">
@@ -49,6 +60,7 @@ const GifSelect = ({ modalOpen, setSelectedGif }) => {
             const url = gif.images.original.url;
             return (
               <button
+                type="button"
                 className={gif.id === selectedId ? "selected" : ""}
                 key={index}
                 onClick={(e) => selectGif(e, url, gif.id)}

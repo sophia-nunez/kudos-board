@@ -14,6 +14,7 @@ const SearchBar = ({
   };
 
   const enterSearch = (event) => {
+    e.stopPropagation();
     if (event.key === "Enter") {
       loadPage(event);
     }
@@ -36,8 +37,12 @@ const SearchBar = ({
         onChange={updateSearch}
         onKeyUp={enterSearch}
       />
-      <button onClick={(e) => loadPage(e)}>Search</button>
-      <button onClick={clearSearch}>Clear</button>
+      <button type="button" onClick={(e) => loadPage(e)}>
+        Search
+      </button>
+      <button type="button" onClick={clearSearch}>
+        Clear
+      </button>
     </div>
   );
 };
