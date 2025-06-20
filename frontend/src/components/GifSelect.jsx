@@ -14,7 +14,7 @@ const GifSelect = ({ modalOpen, setSelectedGif, defaultGif, defaultAlt }) => {
   useEffect(() => {
     setQuery("");
     loadDefaultGifs();
-  }, [modalOpen]); // make dependent on open/close
+  }, [modalOpen]);
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -22,7 +22,7 @@ const GifSelect = ({ modalOpen, setSelectedGif, defaultGif, defaultAlt }) => {
     } else {
       loadDefaultGifs();
     }
-  }, [boardChange]); // test this, should allow clear to work
+  }, [boardChange]);
 
   const loadDefaultGifs = async () => {
     if (query == "") {
@@ -45,7 +45,7 @@ const GifSelect = ({ modalOpen, setSelectedGif, defaultGif, defaultAlt }) => {
   };
 
   const handleSearch = async () => {
-    const gifData = await searchGifs(query);
+    const gifData = await searchGifs(query.trim());
     setGifs(gifData);
   };
 

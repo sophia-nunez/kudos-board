@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router";
 import { deleteBoard, pinBoard } from "../utils/boardUtils";
 import { TiPinOutline, TiPin } from "react-icons/ti";
+import { FaTrashCan } from "react-icons/fa6";
 import "../styles/main.css";
 
 const Board = ({
@@ -83,11 +84,11 @@ const Board = ({
         <h3>{title}</h3>
         <img className="board-image" src={image} alt={altText} />
         <p>{description}</p>
-        {author ? <p>Created By: {author}</p> : <p />}
+        {author ? <p className="author-text">Created By: {author}</p> : <p />}
         <div className="edit-buttons">
           <button>View Board</button>
           <button className="delete-btn" data-id={id} onClick={handleDelete}>
-            Delete Board
+            <FaTrashCan />
           </button>
         </div>
       </article>

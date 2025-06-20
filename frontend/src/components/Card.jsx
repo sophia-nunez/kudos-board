@@ -2,6 +2,7 @@ import "../styles/main.css";
 import "../styles/Card.css";
 import { deleteCard, editCard } from "../utils/cardUtils";
 import { useState } from "react";
+import { FaTrashCan } from "react-icons/fa6";
 
 const Card = ({
   id,
@@ -44,7 +45,7 @@ const Card = ({
       <div className="edit-buttons">
         <button onClick={upvoteCard}>Upvote: {displayedUpvotes}</button>
         <button className="delete-btn" onClick={handleDelete}>
-          Delete
+          <FaTrashCan />
         </button>
       </div>
     </article>

@@ -20,8 +20,12 @@
 }
 
 .edit-buttons {
+  display: flex;
+  flex-direction: row;
   margin-top: 10px;
   margin-bottom: 5px;
+  justify-content: space-evenly;
+  width: 90%;
 }
 
 .card:hover {

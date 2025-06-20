@@ -53,56 +53,59 @@ const AddBoard = ({ setModalOpen, setBoardChange }) => {
     }));
   };
   return (
-    <form id="create-form" onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="name">Title: </label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          value={formInput.title}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Select Cover GIF: </label>
-        <GifSelect
-          setSelectedGif={setSelectedGif}
-          defaultGif={defaultGif}
-          defaultAlt={defaultAlt}
-        />
-      </div>
-      <div>
-        <label htmlFor="description">Category: </label>
-        <select
-          id="description"
-          name="description"
-          value={formInput.description}
-          onChange={handleChange}
-          required
-        >
-          <option value="" disabled={true}>
-            Select
-          </option>
-          <option value="Celebration">Celebration</option>
-          <option value="Thank you">Thank you</option>
-          <option value="Inspiration">Inspiration</option>
-        </select>
-      </div>
-      <div>
-        <label htmlFor="author">Author (optional): </label>
-        <input
-          type="text"
-          id="author"
-          name="author"
-          value={formInput.author}
-          onChange={handleChange}
-        />
-      </div>
+    <div className="create-form">
+      <h1>Create Board</h1>
+      <form id="create-form" onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="name">Title: </label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value={formInput.title}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Select Cover GIF: </label>
+          <GifSelect
+            setSelectedGif={setSelectedGif}
+            defaultGif={defaultGif}
+            defaultAlt={defaultAlt}
+          />
+        </div>
+        <div>
+          <label htmlFor="description">Category: </label>
+          <select
+            id="description"
+            name="description"
+            value={formInput.description}
+            onChange={handleChange}
+            required
+          >
+            <option value="" disabled={true}>
+              Select
+            </option>
+            <option value="Celebration">Celebration</option>
+            <option value="Thank you">Thank you</option>
+            <option value="Inspiration">Inspiration</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="author">Author (optional): </label>
+          <input
+            type="text"
+            id="author"
+            name="author"
+            value={formInput.author}
+            onChange={handleChange}
+          />
+        </div>
 
-      <button type="submit">Create Board</button>
-    </form>
+        <button type="submit">Create Board</button>
+      </form>
+    </div>
   );
 };
 

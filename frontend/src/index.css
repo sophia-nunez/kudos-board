@@ -10,6 +10,7 @@
   --card-bg-color: rgb(78, 72, 83);
   --text-color: #ffffff;
   --delete-red: rgb(122, 40, 34);
+  --gray: rgb(198, 198, 198);
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
@@ -25,6 +26,7 @@
   --primary-color: #b9a7f2;
   --secondary-color: #1b1238;
   --hover-color: #e8e2ff;
+  --gray: rgb(63, 63, 63);
   --delete-red: rgb(221, 132, 132);
   background-color: var(--background-color);
   color: var(--text-color);

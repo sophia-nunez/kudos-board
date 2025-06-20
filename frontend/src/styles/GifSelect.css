@@ -1,10 +1,11 @@
 .gifs {
-  height: 100%;
+  max-height: 80%;
   overflow: scroll;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 20px 0px;
 
   .gif-select {
     display: flex;

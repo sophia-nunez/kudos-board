@@ -21,13 +21,12 @@ const HomePage = () => {
 
   useEffect(() => {
     loadHomePage();
-    console.log("home page fault");
   }, [boardChange]);
 
   const loadHomePage = async () => {
     setIsLoading(true);
     const currQuery = new URLSearchParams({
-      title: query,
+      title: query.trim(),
       description: filter,
     });
     const boards = await fetchBoards(currQuery);

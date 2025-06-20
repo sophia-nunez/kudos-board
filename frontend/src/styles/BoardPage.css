@@ -33,6 +33,12 @@
   color: white;
 }
 
+@media (max-width: 528px) {
+  .card-list {
+    justify-content: center;
+  }
+}
+
 @media (min-width: 1200px) {
   .card-list {
     gap: 50px;
