@@ -4,21 +4,26 @@ import GifSelect from "./GifSelect";
 import { createBoard } from "../utils/boardUtils";
 
 const AddBoard = ({ setModalOpen, setBoardChange }) => {
-  const [selectedGif, setSelectedGif] = useState(
-    "https://giphy.com/embed/tFSqMSMnzPRTAdvKyr"
-  );
+  const defaultGif =
+    "https://media2.giphy.com/media/tFSqMSMnzPRTAdvKyr/giphy.gif?cid=e0ccb6eb6vanvn4upa76ylcmvwvp70a6599e2vlblxoxqe51&ep=v1_gifs_gifId&rid=giphy.gif&ct=g";
+  const defaultAlt = "Default GIF for board cover";
+  const [selectedGif, setSelectedGif] = useState({
+    gifURL: defaultGif,
+    gifAlt: defaultAlt,
+  });
   const [formInput, setFormInput] = useState({
     title: "",
     description: "",
     author: "",
-    imageURL: selectedGif,
-    altText: "GIF for board cover",
+    imageURL: selectedGif.gifURL,
+    altText: selectedGif.gifAlt,
   });
 
   useEffect(() => {
     setFormInput((prev) => ({
       ...prev,
-      imageURL: selectedGif,
+      imageURL: selectedGif.gifURL,
+      altText: selectedGif.gifAlt,
     }));
   }, [selectedGif]);
 
@@ -31,8 +36,8 @@ const AddBoard = ({ setModalOpen, setBoardChange }) => {
       title: "",
       description: "",
       author: "",
-      imageURL: selectedGif,
-      altText: "",
+      imageURL: defaultGif,
+      altText: defaultAlt,
     });
 
     setBoardChange((prev) => !prev);
@@ -62,7 +67,11 @@ const AddBoard = ({ setModalOpen, setBoardChange }) => {
       </div>
       <div>
         <label>Select Cover GIF: </label>
-        <GifSelect setSelectedGif={setSelectedGif} />
+        <GifSelect
+          setSelectedGif={setSelectedGif}
+          defaultGif={defaultGif}
+          defaultAlt={defaultAlt}
+        />
       </div>
       <div>
         <label htmlFor="description">Category: </label>

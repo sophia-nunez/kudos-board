@@ -94,6 +94,7 @@ const HomePage = () => {
                   setBoardChange={setBoardChange}
                   key={board.id}
                   id={board.id}
+                  author={board.author}
                   title={board.title}
                   description={board.description}
                   image={board.imageURL}

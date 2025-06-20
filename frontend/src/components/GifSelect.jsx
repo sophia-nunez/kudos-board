@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 
 import "../styles/GifSelect.css";
 
-const GifSelect = ({ modalOpen, setSelectedGif }) => {
+const GifSelect = ({ modalOpen, setSelectedGif, defaultGif, defaultAlt }) => {
   const isFirstRender = useRef(true); // avoid effect on first render
   const [boardChange, setBoardChange] = useState(false);
   const [gifs, setGifs] = useState(Array());
@@ -33,13 +33,13 @@ const GifSelect = ({ modalOpen, setSelectedGif }) => {
     }
   };
 
-  const selectGif = (event, gifURL, gifId) => {
+  const selectGif = (event, gifURL, gifId, gifAlt) => {
     event.stopPropagation();
     if (gifId === selectedId) {
       setSelectedId("");
-      setSelectedGif("");
+      setSelectedGif({ gifURL: defaultGif, gifAlt: defaultAlt });
     } else {
-      setSelectedGif(gifURL);
+      setSelectedGif({ gifURL, gifAlt });
       setSelectedId(gifId);
     }
   };
@@ -68,7 +68,7 @@ const GifSelect = ({ modalOpen, setSelectedGif }) => {
                 type="button"
                 className={gif.id === selectedId ? "selected" : ""}
                 key={index}
-                onClick={(e) => selectGif(e, url, gif.id)}
+                onClick={(e) => selectGif(e, url, gif.id, gif.title)}
               >
                 <img src={url} alt="gif" />
               </button>

@@ -6,6 +6,7 @@ import "../styles/main.css";
 
 const Board = ({
   id,
+  author,
   title,
   description,
   image,
@@ -79,9 +80,10 @@ const Board = ({
             </p>
           )}
         </div>
-        <img className="board-image" src={image} alt={altText} />
         <h3>{title}</h3>
+        <img className="board-image" src={image} alt={altText} />
         <p>{description}</p>
+        {author && <p>Created By: {author}</p>}
         <div className="edit-buttons">
           <button>View Board</button>
           <button className="delete-btn" data-id={id} onClick={handleDelete}>

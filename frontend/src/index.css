@@ -7,6 +7,7 @@
   --secondary-color: #e9e3ff;
   --hover-color: #787093;
   --background-color: rgb(65, 59, 71);
+  --card-bg-color: rgb(78, 72, 83);
   --text-color: #ffffff;
   --delete-red: rgb(122, 40, 34);
 
@@ -20,6 +21,7 @@
 [data-theme="light"] {
   --text-color: #213547;
   --background-color: #ffffff;
+  --card-bg-color: #f6f2ff;
   --primary-color: #b9a7f2;
   --secondary-color: #1b1238;
   --hover-color: #e8e2ff;
