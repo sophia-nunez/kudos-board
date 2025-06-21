@@ -141,15 +141,15 @@ https://www.loom.com/share/42bce4d4327b4e749eb0e789ba9139b6?sid=af504e16-2524-4f
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+The topics were helpful, especially in writing backend calls. Having examples for how to create and use servers, as well as error checking in the API call helped me prepare the server I used in this project. It also gave me an idea of what things I needed to consider for my database and data entry.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+I would add more client-friendly responses, such as alerts when an error occurs. I would also reorganize some of the features like gif selecting and state management in my project. These got messy and I didn't have enough time to clean up my code. Adding comments to the code would also be helpful to make the code base more maintainable.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I'm overall very proud of this project, I think my design was done well and I utilized principles like custom CSS variables to make management of features easy even as the code base grew. I ran into a lot of issue surrounding state management and rendering between components, such as making sure the parent renders correctly when a child component was updated. The API calls went surprisingly well, and I was able to set up a strong backend, although I did have some issues with initial setup.
 
 ### Open-source libraries used
 
@@ -157,4 +157,4 @@ Add your response here
 
 ### Shout out
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+Thank you to Gabriel for helping me work through the deployment issues I encountered on Friday! The advice you gave on both fixing the immediate issue and general best practices was really helpful.
