@@ -11,11 +11,13 @@ const GifSelect = ({ modalOpen, setSelectedGif, defaultGif, defaultAlt }) => {
   const [selectedId, setSelectedId] = useState("");
   const [query, setQuery] = useState("");
 
+  // resets search and loads trending on open/close
   useEffect(() => {
     setQuery("");
     loadDefaultGifs();
   }, [modalOpen]);
 
+  // triggers render when a change occurs to the contents
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
@@ -33,6 +35,8 @@ const GifSelect = ({ modalOpen, setSelectedGif, defaultGif, defaultAlt }) => {
     }
   };
 
+  // if reselected, reset selected values
+  // if selected, set selected values to target values
   const selectGif = (event, gifURL, gifId, gifAlt) => {
     event.stopPropagation();
     if (gifId === selectedId) {
@@ -44,6 +48,7 @@ const GifSelect = ({ modalOpen, setSelectedGif, defaultGif, defaultAlt }) => {
     }
   };
 
+  // fetch gifs using search endpoint
   const handleSearch = async () => {
     const gifData = await searchGifs(query.trim());
     setGifs(gifData);

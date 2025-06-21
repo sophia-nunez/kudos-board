@@ -13,19 +13,21 @@ export const ThemeProvider = ({ children }) => {
     return "light";
   };
 
+  // set with initlial value as device preferred
   const [theme, setTheme] = useState(getPreferredTheme);
 
+  // sets to opposite theme (toggles)
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
   };
 
   const value = { theme, toggleTheme };
 
-  // return context provider
+  // return context provider to wrap app in
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 };
 
-// custom hook
+// custom hook using theme context
 export const useTheme = () => useContext(ThemeContext);

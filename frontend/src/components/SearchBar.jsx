@@ -7,8 +7,8 @@ const SearchBar = ({
   loadPage,
   setBoardChange,
 }) => {
+  // updates query based on passed in setQuery (board vs. gif)
   const updateSearch = async (event) => {
-    // TODO: what happens if user inputs smth like "   "
     const currQuery = event.target.value;
     setQuery(currQuery);
   };
@@ -20,6 +20,7 @@ const SearchBar = ({
     }
   };
 
+  // resets search bar
   const clearSearch = () => {
     setQuery("");
     setBoardChange((prev) => !prev);

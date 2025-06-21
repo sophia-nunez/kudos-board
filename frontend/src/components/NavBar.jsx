@@ -10,8 +10,9 @@ const NavBar = ({
   loadPage,
   setBoardChange,
 }) => {
-  const isFirstRender = useRef(true); // avoid effect on first render
+  const isFirstRender = useRef(true);
 
+  // ignores first render, triggers render on subsequent updates to filter
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
@@ -20,6 +21,7 @@ const NavBar = ({
     }
   }, [filter]);
 
+  // sets filter, triggering render with filter param
   const onFilter = async (event) => {
     let selected = event.currentTarget.id;
     if (selected === "ThankYou") {

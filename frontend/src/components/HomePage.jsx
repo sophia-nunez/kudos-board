@@ -10,11 +10,12 @@ import { FaSpinner } from "react-icons/fa6";
 const HomePage = () => {
   const [boardList, setBoardList] = useState(Array());
   const [boardChange, setBoardChange] = useState(false);
+  // loading state and error
   const [isLoading, setIsLoading] = useState(false);
   const [loadingError, setLoadingError] = useState(false);
+  // modal
   const [modalOpen, setModalOpen] = useState(false);
   const modalRef = useRef(null);
-
   // search and nav
   const [filter, setFilter] = useState("all");
   const [query, setQuery] = useState("");
@@ -23,6 +24,8 @@ const HomePage = () => {
     loadHomePage();
   }, [boardChange]);
 
+  // uses query and filter to fetch boards
+  // used by all children components of the page
   const loadHomePage = async () => {
     setIsLoading(true);
     const currQuery = new URLSearchParams({
