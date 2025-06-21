@@ -77,6 +77,9 @@ const BoardPage = () => {
           <h2>{board.title}</h2>
           <div className="back-btn" />
         </div>
+        {board.author && (
+          <p className="author-text">Created By: {board.author}</p>
+        )}
         <p>{board.description}</p>
         <button onClick={openCreateModal}>Create a New Card</button>
 
