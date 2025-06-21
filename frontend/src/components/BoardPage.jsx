@@ -9,17 +9,19 @@ import "../styles/main.css";
 import "../styles/BoardPage.css";
 
 const BoardPage = () => {
-  let data = useLoaderData();
+  let data = useLoaderData(); //loads board data
   const [isLoading, setIsLoading] = useState(true);
+  const id = data.id;
+  const [board, setBoard] = useState({});
+  const [cards, setCards] = useState(Array());
+  const [cardId, setCardId] = useState(0);
   const [cardsChange, setCardsChange] = useState(false);
+  // modal vars
   const [modalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState("");
   const modalRef = useRef(null);
-  const [board, setBoard] = useState({});
-  const [cards, setCards] = useState(Array());
-  const id = data.id;
-  const [cardId, setCardId] = useState(0);
 
+  // renders page when cards list changes
   useEffect(() => {
     loadBoardPage();
   }, [cardsChange]);
@@ -35,6 +37,7 @@ const BoardPage = () => {
     // TODO: if board is empty or not found, return something to client
   };
 
+  // open modal functions open modal based on type to conditionally render modal content
   const openCreateModal = () => {
     setModalType("create-card");
     setModalOpen(true);
@@ -44,8 +47,6 @@ const BoardPage = () => {
     setModalType("comments");
     setCardId(givenId);
     setModalOpen(true);
-
-    // fetch comments for that card and  set state
   };
 
   // closes modal on window click off of modal or on span

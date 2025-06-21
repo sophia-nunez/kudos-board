@@ -16,10 +16,11 @@ const Board = ({
   setBoardChange,
 }) => {
   const isFirstRender = useRef(true); // avoid effect on first render
-  const isPinnedFirstRender = useRef(true); // avoid effect on first render
+  const isPinnedFirstRender = useRef(true); // avoid effect on first render for pinned
   const [isPinned, setIsPinned] = useState(pinned);
   const [deleteId, setDeleteId] = useState(0);
 
+  // after first render, trigger render when board is deleted
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
@@ -36,12 +37,14 @@ const Board = ({
     }
   }, [deleteId]);
 
+  // delete board by id
   const handleDelete = (event) => {
     event.preventDefault();
     event.stopPropagation();
     setDeleteId(id);
   };
 
+  // after first render, trigger render when board is pinned/unpinned
   useEffect(() => {
     if (isPinnedFirstRender.current) {
       isPinnedFirstRender.current = false;

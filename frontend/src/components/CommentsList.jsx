@@ -5,19 +5,21 @@ import { fetchComments, createComment } from "../utils/commentUtils";
 import { fetchCard } from "../utils/cardUtils";
 
 const CommentsList = ({ boardId, cardId }) => {
+  const [card, setCard] = useState({});
   const [comments, setComments] = useState(Array());
   const [pageChange, setPageChange] = useState(false);
-  const [card, setCard] = useState({});
   const [formInput, setFormInput] = useState({
     cardId,
     text: "",
     author: "",
   });
 
+  // whenever any components update, pageChange triggers render
   useEffect(() => {
     getComments();
   }, [pageChange]);
 
+  // function to load page - gets selected card and associated comments
   const getComments = async () => {
     const loadedCard = await fetchCard(boardId, cardId);
     setCard(loadedCard);
@@ -25,18 +27,22 @@ const CommentsList = ({ boardId, cardId }) => {
     setComments(loadedComments);
   };
 
+  // uses form input to create comment for current card
   const handleSubmit = async (e) => {
     e.stopPropagation();
     e.preventDefault();
 
     await createComment(boardId, formInput);
 
+    // reset form inputs
     setFormInput({
       cardId,
       text: "",
       author: "",
     });
 
+    // render page
+    // TODO: remove one of the below and test functionality
     getComments();
     setPageChange((prev) => !prev);
   };

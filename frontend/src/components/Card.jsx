@@ -18,6 +18,7 @@ const Card = ({
 }) => {
   const [displayedUpvotes, setDisplayedUpvotes] = useState(parseInt(upvotes));
 
+  // increments upvote of selected card and triggers render of cards list
   const upvoteCard = async (e) => {
     e.stopPropagation();
     const newVotes = displayedUpvotes + 1;
@@ -26,6 +27,7 @@ const Card = ({
     setCardsChange((prev) => !prev);
   };
 
+  // deletes selected card and triggers render of cards list
   const handleDelete = async (e) => {
     e.stopPropagation();
     await deleteCard(boardId, id);

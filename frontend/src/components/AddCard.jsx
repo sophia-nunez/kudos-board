@@ -18,6 +18,7 @@ const AddCard = ({ setModalOpen, boardId, setBoardChange }) => {
     altText: "Cover image for Card",
   });
 
+  // update form value when gif is changed
   useEffect(() => {
     setFormInput((prev) => ({
       ...prev,
@@ -26,6 +27,7 @@ const AddCard = ({ setModalOpen, boardId, setBoardChange }) => {
     }));
   }, [selectedGif]);
 
+  // checks that gif was selected, creates card, triggers render, and closes modal
   const handleSubmit = (e) => {
     const form = document.getElementById("create-form");
     const gifInput = form.querySelector(

@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 const Comment = ({ text, author }) => {
   const [authorDisplay, setAuthorDisplay] = useState(author);
 
+  // default name when no author
   useEffect(() => {
     if (!author) {
       setAuthorDisplay("Anonymous");
     }
   }, []);
+
   return (
     <article className="comment">
       <p className="comment-icon">👾</p>

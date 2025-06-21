@@ -19,6 +19,7 @@ const AddBoard = ({ setModalOpen, setBoardChange }) => {
     altText: selectedGif.gifAlt,
   });
 
+  // update form value when gif is changed
   useEffect(() => {
     setFormInput((prev) => ({
       ...prev,
@@ -27,6 +28,7 @@ const AddBoard = ({ setModalOpen, setBoardChange }) => {
     }));
   }, [selectedGif]);
 
+  // creates board, triggers render, and closes modal
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -44,14 +46,16 @@ const AddBoard = ({ setModalOpen, setBoardChange }) => {
     setModalOpen(false);
   };
 
+  // when any input is changed, updates respective value
   const handleChange = (event) => {
     const { name, value } = event.target;
 
     setFormInput((prevData) => ({
-      ...prevData, // keep data but replace target value
+      ...prevData,
       [name]: value,
     }));
   };
+
   return (
     <div className="create-form">
       <h1>Create Board</h1>
