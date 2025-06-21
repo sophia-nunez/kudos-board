@@ -153,7 +153,7 @@ I'm overall very proud of this project, I think my design was done well and I ut
 
 ### Open-source libraries used
 
-- Add any links to open-source libraries used in your project.
+I utilized the icon library [React Icons](https://react-icons.github.io/react-icons/).
 
 ### Shout out
 
